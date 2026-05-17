@@ -1,0 +1,151 @@
+/* ============================================
+   DESIGN TOKENS — Tactical Editorial
+   Source: Stitch Project 11024833864907380425
+   ============================================ */
+
+:root {
+  /* ── Canvas & Surfaces ── */
+  --color-canvas:                 #050505;
+  --color-surface:                #0A0B0A;
+  --color-surface-dim:            #0A0B0A;
+  --color-surface-bright:         #393938;
+  --color-surface-container-lowest: #070807;
+  --color-surface-container-low:  #111211;
+  --color-surface-container:      #161716;
+  --color-surface-container-high: #1E1F1E;
+  --color-surface-container-highest: #282928;
+  --color-charcoal:               #0E100E;
+
+  /* ── Brand Primaries ── */
+  --color-primary:                #b6d088;
+  --color-primary-container:      #556b2f;
+  --color-on-primary:             #233600;
+  --color-on-primary-container:   #d0eba1;
+  --color-olive-drab:             #556B2F;
+  --color-moss-green:             #6B8E23;
+
+  /* ── Secondary ── */
+  --color-secondary:              #ccc6ba;
+  --color-secondary-container:    #4a473e;
+  --color-on-secondary:           #333028;
+
+  /* ── Tertiary ── */
+  --color-tertiary:               #add461;
+  --color-tertiary-container:     #4e6e00;
+  --color-on-tertiary:            #243600;
+
+  /* ── Semantic Text ── */
+  --color-bone:                   #DFD9CD;
+  --color-floral-white:           #FFFAF0;
+  --color-on-surface:             #e4e2e0;
+  --color-on-surface-variant:     #c5c8b8;
+  --color-text-primary:           #FFFAF0;
+  --color-text-body:              #DFD9CD;
+  --color-text-muted:             #8f9284;
+
+  /* ── Borders & Outlines ── */
+  --color-border-slate:           #2A2C29;
+  --color-outline:                #8f9284;
+  --color-outline-variant:        #45483c;
+
+  /* ── Status ── */
+  --color-error:                  #ffb4ab;
+  --color-error-container:        #93000a;
+  --color-exploit-red:            #EF4444;
+
+  /* ── Inverse ── */
+  --color-inverse-surface:        #e4e2e0;
+  --color-inverse-on-surface:     #30312f;
+  --color-inverse-primary:        #50652a;
+
+  /* ── Typography ── */
+  --font-display:                 'Playfair Display', Georgia, serif;
+  --font-body:                    'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  --font-mono:                    'JetBrains Mono', 'Fira Code', 'Consolas', monospace;
+
+  /* Display Large */
+  --text-display-lg-size:         64px;
+  --text-display-lg-weight:       800;
+  --text-display-lg-leading:      1.1;
+  --text-display-lg-tracking:     -0.03em;
+
+  /* Display Large — Mobile */
+  --text-display-lg-mobile-size:  40px;
+  --text-display-lg-mobile-weight: 800;
+  --text-display-lg-mobile-leading: 1.2;
+  --text-display-lg-mobile-tracking: -0.02em;
+
+  /* Headline Medium */
+  --text-headline-md-size:        32px;
+  --text-headline-md-weight:      700;
+  --text-headline-md-leading:     1.3;
+  --text-headline-md-tracking:    -0.01em;
+
+  /* Body Base */
+  --text-body-size:               16px;
+  --text-body-weight:             400;
+  --text-body-leading:            1.6;
+
+  /* Body Small */
+  --text-body-sm-size:            14px;
+  --text-body-sm-weight:          400;
+  --text-body-sm-leading:         1.5;
+
+  /* Label Caps */
+  --text-label-size:              12px;
+  --text-label-weight:            700;
+  --text-label-leading:           1;
+  --text-label-tracking:          0.15em;
+
+  /* Code */
+  --text-code-size:               14px;
+  --text-code-weight:             400;
+  --text-code-leading:            1.6;
+
+  /* ── Spacing ── */
+  --space-unit:                   8px;
+  --space-1:                      8px;
+  --space-2:                      16px;
+  --space-3:                      24px;
+  --space-4:                      32px;
+  --space-5:                      40px;
+  --space-6:                      48px;
+  --space-8:                      64px;
+  --space-10:                     80px;
+  --space-16:                     128px;
+
+  --container-max:                1152px;
+  --gutter:                       24px;
+  --margin-mobile:                24px;
+  --margin-desktop:               64px;
+  --section-gap:                  80px;
+  --section-gap-mobile:           56px;
+
+  /* ── Border Radius ── */
+  --radius-sm:                    0.25rem;
+  --radius-default:               0.5rem;
+  --radius-md:                    0.75rem;
+  --radius-lg:                    1rem;
+  --radius-xl:                    1.5rem;
+  --radius-2xl:                   1rem;
+  --radius-3xl:                   1.5rem;
+  --radius-full:                  9999px;
+
+  /* ── Elevation (Glass) ── */
+  --glass-blur:                   16px;
+  --glass-opacity:                0.8;
+
+  /* ── Transitions ── */
+  --transition-fast:              150ms ease;
+  --transition-base:              250ms ease;
+  --transition-smooth:            400ms cubic-bezier(0.16, 1, 0.3, 1);
+  --transition-reveal:            700ms cubic-bezier(0.16, 1, 0.3, 1);
+
+  /* ── Z-Index Scale ── */
+  --z-base:                       1;
+  --z-dropdown:                   100;
+  --z-sticky:                     200;
+  --z-navbar:                     500;
+  --z-modal:                      1000;
+  --z-cursor:                     9999;
+}
