@@ -28,8 +28,8 @@ const PORTFOLIO = {
     cta_primary: { text: 'View Projects', target: '#projects' },
     cta_secondary: { text: 'GitHub', target: 'https://github.com/Swayam-jhaa', external: true },
     stats: [
-      { value: '8+', label: 'Public Repositories' },
-      { value: '5',  label: 'Security Tools Built' },
+      { value: '15+', label: 'Projects' },
+      { value: '11+',  label: 'Security Tools Built' },
       { value: '∞',  label: 'Bugs To Find' },
     ],
   },
