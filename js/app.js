@@ -8,61 +8,58 @@ document.addEventListener('DOMContentLoaded', () => {
   initMobileMenu();
 });
 
-/* Render Featured Systems Grid */
+/* Render Featured Systems Grid with UI Preview Screenshots */
 function renderSystems() {
   const container = document.getElementById('systems-container');
   if (!container || !PORTFOLIO_DATA.systems) return;
 
   container.innerHTML = PORTFOLIO_DATA.systems.map((sys) => {
-    const isFeatured = sys.featured;
-    const cardClass = isFeatured ? 'system-card--featured' : 'system-card--standard';
-    
-    let badgeClass = 'system-card__badge';
-    if (sys.badgeType === 'flagship') badgeClass += ' system-card__badge--flagship';
-    if (sys.badgeType === 'gold') badgeClass += ' system-card__badge--gold';
-
-    const highlightsHtml = sys.highlights.map(h => 
-      `<li class="system-card__highlight-item">${h}</li>`
-    ).join('');
+    let badgeClass = 'showcase-card__badge';
+    if (sys.badgeType === 'flagship') badgeClass += ' showcase-card__badge--flagship';
+    if (sys.badgeType === 'gold') badgeClass += ' showcase-card__badge--gold';
 
     const techChipsHtml = sys.stack.map(t => 
       `<span class="tech-chip">${t}</span>`
     ).join('');
 
-    const liveBtnHtml = sys.live ? 
-      `<a href="${sys.live}" target="_blank" rel="noopener noreferrer" class="system-card__link system-card__link--accent">
-        Live Deployment ↗
+    const liveLinkHtml = sys.live ? 
+      `<a href="${sys.live}" target="_blank" rel="noopener noreferrer" class="showcase-card__link-text" title="Live Deployment">
+        LIVE DEMO ↗
       </a>` : '';
 
     return `
-      <article class="system-card ${cardClass}" data-reveal>
-        <div>
-          <div class="system-card__header">
-            <div>
-              <h3 class="system-card__title">${sys.name}</h3>
-              <p class="system-card__tagline">${sys.tagline}</p>
-            </div>
-            <span class="${badgeClass}">${sys.badge}</span>
-          </div>
-
-          <p class="system-card__desc">${sys.description}</p>
-
-          <ul class="system-card__highlights">
-            ${highlightsHtml}
-          </ul>
+      <article class="showcase-card" data-reveal>
+        <div class="showcase-card__img-container">
+          <img 
+            src="${sys.image}" 
+            alt="${sys.name} System UI Preview" 
+            class="showcase-card__img" 
+            loading="lazy"
+          />
+          <span class="${badgeClass}">${sys.badge}</span>
         </div>
 
-        <div>
-          <div class="system-card__tech">
-            ${techChipsHtml}
+        <div class="showcase-card__meta-bar">
+          <div class="showcase-card__index">${sys.num}</div>
+          <div class="showcase-card__title-group">
+            <h3 class="showcase-card__name">${sys.name}</h3>
+            <p class="showcase-card__category">${sys.category}</p>
           </div>
-
-          <div class="system-card__footer">
-            <a href="${sys.github}" target="_blank" rel="noopener noreferrer" class="system-card__link">
-              View Repository →
+          <div class="showcase-card__actions">
+            ${liveLinkHtml}
+            <a href="${sys.github}" target="_blank" rel="noopener noreferrer" class="showcase-card__arrow-btn" aria-label="View ${sys.name} on GitHub">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <line x1="5" y1="12" x2="19" y2="12"></line>
+                <polyline points="12 5 19 12 12 19"></polyline>
+              </svg>
             </a>
-            ${liveBtnHtml}
           </div>
+        </div>
+
+        <p class="showcase-card__desc">${sys.description}</p>
+
+        <div class="showcase-card__chips">
+          ${techChipsHtml}
         </div>
       </article>
     `;

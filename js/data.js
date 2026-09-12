@@ -30,28 +30,34 @@ const PORTFOLIO_DATA = {
   systems: [
     {
       id: 'techpulse-intelligence',
+      num: '01',
       name: 'TechPulse Intelligence',
-      badge: 'Flagship Production System',
-      badgeType: 'flagship',
+      category: 'Autonomous AI Threat Pipeline · Next.js & FastAPI',
       tagline: 'Autonomous Cybersecurity & AI Intelligence Pipeline',
       description: 'An automated end-to-end intelligence pipeline that ingests raw CVE disclosures, EPSS exploit likelihood signals, AI research papers, and developer ecosystem shifts into daily, synthesized briefings for technical decision makers.',
+      image: 'assets/images/projects/techpulse.jpg',
+      badge: 'Flagship Production System',
+      badgeType: 'flagship',
       highlights: [
         'Multi-source ingestion pipeline with automated deduplication & scoring',
         'AI distillation & LLM evaluation engine generating structured briefings',
         'Production Next.js deployment on Vercel with automated GitHub Actions CI/CD'
       ],
-      stack: ['TypeScript', 'Next.js', 'AI Synthesis', 'GitHub Actions', 'Vercel'],
+      stack: ['TypeScript', 'Next.js', 'FastAPI', 'Vercel', 'CI/CD'],
       github: 'https://github.com/Swayam-jhaa/TechPulse-Intelligence',
       live: 'https://techpulse-intel.vercel.app',
       featured: true
     },
     {
       id: 'sentinel-scan',
+      num: '02',
       name: 'SENTINEL-SCAN',
-      badge: 'Distributed Systems',
-      badgeType: 'standard',
+      category: 'Asynchronous ASM Discovery · AsyncIO & Sockets',
       tagline: 'Asynchronous Attack Surface Management Framework',
       description: 'Continuous attack-surface reconnaissance engine built on an asynchronous producer-consumer queue pattern. Performs non-blocking socket probing, service banner grabbing, and port discovery without thread starvation or socket exhaustion.',
+      image: 'assets/images/projects/sentinel-scan.jpg',
+      badge: 'Distributed Systems',
+      badgeType: 'standard',
       highlights: [
         'AsyncIO concurrency pipeline with millisecond socket timeout throttling',
         'Producer-consumer worker pool for continuous asset discovery',
@@ -63,11 +69,14 @@ const PORTFOLIO_DATA = {
     },
     {
       id: 'apre',
-      name: 'APRE (Agentic Pentest Reporting)',
-      badge: 'Multi-Agent AI',
-      badgeType: 'standard',
+      num: '03',
+      name: 'APRE Audit Platform',
+      category: 'Autonomous Multi-Agent Audit · LLM Workflows',
       tagline: 'Autonomous Multi-Agent Security Audit Engine',
       description: 'An autonomous multi-agent reporting workflow that ingests raw vulnerability scanner outputs (Nmap, Burp Suite, Zap) and decomposes findings across specialized agents (Parser, Severity Evaluator, Remediation Architect) to generate audit-ready reports.',
+      image: 'assets/images/projects/apre.jpg',
+      badge: 'Multi-Agent AI',
+      badgeType: 'standard',
       highlights: [
         'Cooperative multi-agent architecture with strict schema adherence',
         'Automated CVSS mapping and contextual mitigation drafting',
@@ -79,11 +88,14 @@ const PORTFOLIO_DATA = {
     },
     {
       id: 'predicta',
-      name: 'Predicta',
+      num: '04',
+      name: 'Predicta Mission Control',
+      category: 'Aerospace Telemetry Anomaly Detection · SIH 2026',
+      tagline: 'Aerospace Hardware Anomaly Detection & Drift Forecast',
+      description: 'High-reliability screening pipeline for aerospace electronic components undergoing burn-in stress testing. Built for Smart India Hackathon 2026 (Problem Statement PS170), modeling parametric drift curves to detect anomalous decay before failure.',
+      image: 'assets/images/projects/predicta.jpg',
       badge: 'SIH 2026 Finalist (PS170)',
       badgeType: 'gold',
-      tagline: 'Aerospace Hardware Anomaly Detection & Drift Forecast',
-      description: 'High-reliability screening pipeline for aerospace electronic components undergoing burn-in stress testing. Built for the Smart India Hackathon 2026 (Problem Statement PS170), modeling parametric drift curves to detect anomalous decay before failure.',
       highlights: [
         'High-precision time-series drift forecasting and anomaly detection',
         'FastAPI mathematical backend utilizing NumPy and SciPy statistical models',
@@ -95,11 +107,14 @@ const PORTFOLIO_DATA = {
     },
     {
       id: 'cameracanvas',
-      name: 'CameraCanvas',
-      badge: 'Computer Vision',
-      badgeType: 'standard',
+      num: '05',
+      name: 'CameraCanvas AI',
+      category: 'Computer Vision 60fps · MediaPipe Gesture Engine',
       tagline: 'Gesture-Controlled Real-Time 60fps Whiteboard',
       description: 'An interactive computer-vision whiteboard enabling gesture-based real-time canvas drawing via camera tracking. Runs MediaPipe hand-landmark models purely client-side inside requestAnimationFrame loops with zero server video transmission.',
+      image: 'assets/images/projects/cameracanvas.jpg',
+      badge: 'Computer Vision',
+      badgeType: 'standard',
       highlights: [
         'Sub-16ms frame-processing budget ensuring continuous 60fps interaction',
         'Bézier stroke curve interpolation based on fingertip tracking',
@@ -107,7 +122,7 @@ const PORTFOLIO_DATA = {
       ],
       stack: ['TypeScript', 'React 19', 'Next.js', 'MediaPipe', 'Canvas API'],
       github: 'https://github.com/Swayam-jhaa/CameraCanvas',
-      featured: false
+      featured: true
     },
     {
       id: 'decognito',
