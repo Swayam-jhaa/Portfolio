@@ -1,6 +1,6 @@
 /* ==========================================================================
    ANIMATIONS & INTERACTIONS — Executive Portfolio
-   Refined for 60fps Scroll Dynamics & Micro-Interactions
+   GSAP 3.12 + ScrollTrigger Continuous Kinetic Engine
    ========================================================================== */
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -10,6 +10,8 @@ document.addEventListener('DOMContentLoaded', () => {
   initHeroParallax();
   initWordCycler();
   initCursorGlow();
+  initGsapQuoteScroll();
+  initGsapContinuousStream();
   initScrollReveals();
   initSvgArchitectureFlow();
 });
@@ -97,8 +99,6 @@ function initScrollSpy() {
 
 /* 4. Hero Ambient Movement (Static Portrait & Anchored Text) */
 function initHeroParallax() {
-  // Portrait and behind-text remain strictly static as instructed
-  // (no 3D tilt or perspective shift that breaks 2D cutouts)
   const ambientLight = document.getElementById('hero-ambient-light');
   if (!ambientLight) return;
 
@@ -112,11 +112,11 @@ function initHeroParallax() {
     const dx = targetX - currentX;
     const dy = targetY - currentY;
 
-    currentX += dx * 0.06;
-    currentY += dy * 0.06;
+    currentX += dx * 0.05;
+    currentY += dy * 0.05;
 
-    // Only subtly drift the ambient crimson background halo
-    ambientLight.style.transform = `translate(calc(-50% + ${currentX * 18}px), calc(-50% + ${currentY * 18}px))`;
+    // Subtly drift the ambient crimson background halo
+    ambientLight.style.transform = `translate(calc(-50% + ${currentX * 14}px), calc(-50% + ${currentY * 14}px))`;
 
     if (Math.abs(dx) > 0.005 || Math.abs(dy) > 0.005) {
       requestAnimationFrame(render);
@@ -214,19 +214,128 @@ function initCursorGlow() {
   });
 }
 
-/* 7. Staggered Scroll Reveals with IntersectionObserver */
+/* 7. GSAP Milton Transition Quote Scroll Scrub */
+function initGsapQuoteScroll() {
+  if (typeof gsap === 'undefined' || typeof ScrollTrigger === 'undefined') {
+    // Fallback if GSAP is not loaded
+    const words = document.querySelectorAll('.quote-word');
+    words.forEach(w => {
+      w.style.opacity = '1';
+      w.style.transform = 'none';
+    });
+    return;
+  }
+
+  gsap.registerPlugin(ScrollTrigger);
+
+  const quoteWords = document.querySelectorAll('.quote-word');
+  const quoteSection = document.getElementById('quote');
+  if (!quoteWords.length || !quoteSection) return;
+
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    gsap.set(quoteWords, { opacity: 1, y: 0 });
+    return;
+  }
+
+  gsap.fromTo(quoteWords, 
+    { 
+      opacity: 0.14, 
+      y: 18 
+    },
+    {
+      opacity: 1,
+      y: 0,
+      stagger: 0.08,
+      duration: 1,
+      ease: 'power2.out',
+      scrollTrigger: {
+        trigger: quoteSection,
+        start: 'top 75%',
+        end: 'bottom 55%',
+        scrub: 0.6
+      }
+    }
+  );
+}
+
+/* 8. GSAP Continuous Unboxed Stream Reveals */
+function initGsapContinuousStream() {
+  if (typeof gsap === 'undefined' || typeof ScrollTrigger === 'undefined') return;
+
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    return;
+  }
+
+  gsap.registerPlugin(ScrollTrigger);
+
+  // Unboxed System Dossiers (continuous scroll cascade)
+  const dossiers = document.querySelectorAll('.system-dossier');
+  dossiers.forEach((dossier) => {
+    const visual = dossier.querySelector('.system-dossier__visual');
+    const content = dossier.querySelector('.system-dossier__content');
+
+    if (visual) {
+      gsap.fromTo(visual,
+        { opacity: 0, y: 45, scale: 0.95 },
+        {
+          opacity: 1,
+          y: 0,
+          scale: 1,
+          duration: 1.1,
+          ease: 'power3.out',
+          scrollTrigger: {
+            trigger: dossier,
+            start: 'top 82%',
+            toggleActions: 'play none none none'
+          }
+        }
+      );
+    }
+
+    if (content) {
+      gsap.fromTo(content,
+        { opacity: 0, y: 35 },
+        {
+          opacity: 1,
+          y: 0,
+          duration: 1,
+          delay: 0.12,
+          ease: 'power3.out',
+          scrollTrigger: {
+            trigger: dossier,
+            start: 'top 82%',
+            toggleActions: 'play none none none'
+          }
+        }
+      );
+    }
+  });
+
+  // Stack Stream Columns
+  const stackCols = document.querySelectorAll('.stack-stream__col');
+  if (stackCols.length) {
+    gsap.fromTo(stackCols,
+      { opacity: 0, y: 30 },
+      {
+        opacity: 1,
+        y: 0,
+        stagger: 0.1,
+        duration: 0.85,
+        ease: 'power2.out',
+        scrollTrigger: {
+          trigger: '#stack-container',
+          start: 'top 85%',
+          toggleActions: 'play none none none'
+        }
+      }
+    );
+  }
+}
+
+/* 9. General Scroll Reveals for Editorial and Spotlight Blocks */
 function initScrollReveals() {
   const elements = document.querySelectorAll('[data-reveal]');
   if (!elements.length) return;
-
-  // Set stagger delays for grid children
-  const showcaseGrid = document.getElementById('systems-container');
-  if (showcaseGrid) {
-    const cards = showcaseGrid.children;
-    for (let i = 0; i < cards.length; i++) {
-      cards[i].style.transitionDelay = `${(i % 3) * 0.1}s`;
-    }
-  }
 
   const observer = new IntersectionObserver((entries) => {
     entries.forEach((entry) => {
@@ -240,12 +349,11 @@ function initScrollReveals() {
   elements.forEach((el) => observer.observe(el));
 }
 
-/* 8. Interactive SVG Architecture Flow Animation & Node Highlighting */
+/* 10. Interactive SVG Architecture Flow Animation (NO CSS Transform Overrides) */
 function initSvgArchitectureFlow() {
   const archSection = document.getElementById('architecture');
   const flowPaths = document.querySelectorAll('.svg-flow-path');
   const pulseParticles = document.querySelectorAll('.svg-pulse-particle');
-  const nodeGroups = document.querySelectorAll('.arch-node-group');
 
   if (!archSection) return;
 
@@ -259,14 +367,6 @@ function initSvgArchitectureFlow() {
   }, { threshold: 0.15 });
 
   observer.observe(archSection);
-
-  // Micro-interaction: Node hover effects
-  nodeGroups.forEach((node) => {
-    node.addEventListener('mouseenter', () => {
-      node.style.transform = 'translateY(-3px)';
-    });
-    node.addEventListener('mouseleave', () => {
-      node.style.transform = 'translateY(0)';
-    });
-  });
+  // Note: Hover styling is now purely handled in CSS on rect.node-box and text.node-title,
+  // completely avoiding transform overrides that break SVG translation.
 }

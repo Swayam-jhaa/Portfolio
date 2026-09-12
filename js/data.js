@@ -94,7 +94,7 @@ const PORTFOLIO_DATA = {
       tagline: 'Aerospace Hardware Anomaly Detection & Drift Forecast',
       description: 'High-reliability screening pipeline for aerospace electronic components undergoing burn-in stress testing. Built for Smart India Hackathon 2026 (Problem Statement PS170), modeling parametric drift curves to detect anomalous decay before failure.',
       image: 'assets/images/projects/predicta.jpg',
-      badge: 'SIH 2026 Finalist (PS170)',
+      badge: 'SIH 2026 · Round 2 (PS170)',
       badgeType: 'gold',
       highlights: [
         'High-precision time-series drift forecasting and anomaly detection',

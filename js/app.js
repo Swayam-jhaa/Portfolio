@@ -8,84 +8,109 @@ document.addEventListener('DOMContentLoaded', () => {
   initMobileMenu();
 });
 
-/* Render Featured Systems Grid with UI Preview Screenshots */
+/* Render Featured Systems as Unboxed Continuous Dossiers */
 function renderSystems() {
   const container = document.getElementById('systems-container');
   if (!container || !PORTFOLIO_DATA.systems) return;
 
-  container.innerHTML = PORTFOLIO_DATA.systems.map((sys) => {
-    let badgeClass = 'showcase-card__badge';
-    if (sys.badgeType === 'flagship') badgeClass += ' showcase-card__badge--flagship';
-    if (sys.badgeType === 'gold') badgeClass += ' showcase-card__badge--gold';
+  container.innerHTML = PORTFOLIO_DATA.systems.map((sys, index) => {
+    let badgeModifier = '';
+    if (sys.badgeType === 'flagship') badgeModifier = 'system-dossier__badge--flagship';
+    if (sys.badgeType === 'gold') badgeModifier = 'system-dossier__badge--gold';
 
     const techChipsHtml = sys.stack.map(t => 
       `<span class="tech-chip">${t}</span>`
     ).join('');
 
-    const liveLinkHtml = sys.live ? 
-      `<a href="${sys.live}" target="_blank" rel="noopener noreferrer" class="showcase-card__link-text" title="Live Deployment">
-        LIVE DEMO ↗
-      </a>` : '';
+    const highlightsHtml = (sys.highlights && sys.highlights.length) ? `
+      <ul class="system-dossier__highlights">
+        ${sys.highlights.map(h => `<li><span class="dossier-bullet">✦</span> ${h}</li>`).join('')}
+      </ul>
+    ` : '';
+
+    const liveBtnHtml = sys.live ? `
+      <a href="${sys.live}" target="_blank" rel="noopener noreferrer" class="btn btn--primary btn--sm" title="Explore live production deployment">
+        <span>Explore Live System</span>
+        <span class="btn__arrow">↗</span>
+      </a>
+    ` : '';
+
+    const githubBtnHtml = sys.github ? `
+      <a href="${sys.github}" target="_blank" rel="noopener noreferrer" class="btn btn--secondary btn--sm" aria-label="View ${sys.name} repository on GitHub">
+        <span>View Repository</span>
+        <span class="btn__arrow">→</span>
+      </a>
+    ` : '';
+
+    const isReversed = (index % 2 === 1) ? 'system-dossier--reversed' : '';
 
     return `
-      <article class="showcase-card" data-reveal>
-        <div class="showcase-card__img-container">
-          <img 
-            src="${sys.image}" 
-            alt="${sys.name} System UI Preview" 
-            class="showcase-card__img" 
-            loading="lazy"
-          />
-          <span class="${badgeClass}">${sys.badge}</span>
-        </div>
-
-        <div class="showcase-card__meta-bar">
-          <div class="showcase-card__index">${sys.num}</div>
-          <div class="showcase-card__title-group">
-            <h3 class="showcase-card__name">${sys.name}</h3>
-            <p class="showcase-card__category">${sys.category}</p>
-          </div>
-          <div class="showcase-card__actions">
-            ${liveLinkHtml}
-            <a href="${sys.github}" target="_blank" rel="noopener noreferrer" class="showcase-card__arrow-btn" aria-label="View ${sys.name} on GitHub">
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                <line x1="5" y1="12" x2="19" y2="12"></line>
-                <polyline points="12 5 19 12 12 19"></polyline>
-              </svg>
-            </a>
+      <article class="system-dossier ${isReversed}" data-system="${sys.id}">
+        <!-- Visual Column -->
+        <div class="system-dossier__visual">
+          <div class="system-dossier__frame">
+            <img 
+              src="${sys.image}" 
+              alt="${sys.name} System UI & Architecture Preview" 
+              class="system-dossier__img" 
+              loading="lazy"
+            />
+            <div class="system-dossier__overlay-glow" aria-hidden="true"></div>
+            <span class="system-dossier__badge ${badgeModifier}">${sys.badge}</span>
           </div>
         </div>
 
-        <p class="showcase-card__desc">${sys.description}</p>
+        <!-- Content & Dossier Column -->
+        <div class="system-dossier__content">
+          <div class="system-dossier__header">
+            <div class="system-dossier__index">${sys.num}</div>
+            <div class="system-dossier__meta">
+              <span class="system-dossier__category">${sys.category}</span>
+              <h3 class="system-dossier__title">${sys.name}</h3>
+            </div>
+          </div>
 
-        <div class="showcase-card__chips">
-          ${techChipsHtml}
+          <p class="system-dossier__tagline">${sys.tagline}</p>
+          <p class="system-dossier__desc">${sys.description}</p>
+
+          ${highlightsHtml}
+
+          <div class="system-dossier__chips">
+            ${techChipsHtml}
+          </div>
+
+          <div class="system-dossier__actions">
+            ${liveBtnHtml}
+            ${githubBtnHtml}
+          </div>
         </div>
       </article>
     `;
   }).join('');
 }
 
-/* Render Technical Arsenal */
+/* Render Technical Arsenal Stream */
 function renderStack() {
   const container = document.getElementById('stack-container');
   if (!container || !PORTFOLIO_DATA.stackCategories) return;
 
   container.innerHTML = PORTFOLIO_DATA.stackCategories.map((cat) => {
     const itemsHtml = cat.items.map(item => `
-      <div class="stack-item">
-        <span class="stack-item__name">${item.name}</span>
-        <span class="stack-item__desc">${item.desc}</span>
+      <div class="stack-stream__item">
+        <div class="stack-stream__item-top">
+          <span class="stack-stream__item-name">${item.name}</span>
+        </div>
+        <p class="stack-stream__item-desc">${item.desc}</p>
       </div>
     `).join('');
 
     return `
-      <div class="stack-card" data-reveal>
-        <div class="stack-card__header">
+      <div class="stack-stream__col">
+        <div class="stack-stream__header">
           <span class="navbar__pulse-dot"></span>
-          <h3 class="stack-card__title">${cat.title}</h3>
+          <h3 class="stack-stream__title">${cat.title}</h3>
         </div>
-        <div class="stack-card__items">
+        <div class="stack-stream__list">
           ${itemsHtml}
         </div>
       </div>

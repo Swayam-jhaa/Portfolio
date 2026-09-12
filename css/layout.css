@@ -355,7 +355,7 @@
   background-color: var(--bg-void);
 }
 
-/* Ambient Radial Glow */
+/* Ambient Radial Glow (Calibrated Atmospheric Lighting) */
 .hero__ambient-light {
   position: absolute;
   top: 40%;
@@ -364,8 +364,8 @@
   width: 850px;
   height: 850px;
   border-radius: 50%;
-  background: radial-gradient(circle, rgba(229, 9, 20, 0.18) 0%, rgba(229, 9, 20, 0.03) 55%, transparent 75%);
-  filter: blur(80px);
+  background: radial-gradient(circle, rgba(229, 9, 20, 0.11) 0%, rgba(229, 9, 20, 0.02) 50%, transparent 70%);
+  filter: blur(90px);
   pointer-events: none;
   z-index: 0;
 }
@@ -687,27 +687,181 @@
 }
 
 /* ==========================================================================
-   SYSTEMS SHOWCASE GRID (Works)
-   ========================================================================= */
+   QUOTE TRANSITION SECTION (John Milton / Paradise Lost)
+   ========================================================================== */
 
-.systems-grid {
+.quote-section {
+  position: relative;
+  min-height: 85vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: clamp(4rem, 8vh, 6rem) 0;
+  background: radial-gradient(ellipse at 50% 50%, rgba(229, 9, 20, 0.05) 0%, transparent 65%), var(--bg-void);
+  border-top: 1px solid var(--border-subtle);
+  border-bottom: 1px solid var(--border-subtle);
+  overflow: hidden;
+  text-align: center;
+}
+
+.quote-container {
+  max-width: 960px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.quote-eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.75rem;
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  color: var(--accent-crimson);
+  text-transform: uppercase;
+  margin-bottom: clamp(1.5rem, 3vh, 2.5rem);
+}
+
+.quote-eyebrow-line {
+  width: 32px;
+  height: 1.5px;
+  background-color: var(--accent-crimson);
+}
+
+.quote-statement {
+  font-family: var(--font-quote);
+  font-size: clamp(2.5rem, 5.5vw, 4.85rem);
+  font-style: italic;
+  font-weight: 600;
+  line-height: 1.15;
+  letter-spacing: -0.01em;
+  color: #ffffff;
+  margin-bottom: clamp(1.75rem, 3.5vh, 2.5rem);
+  max-width: 900px;
+}
+
+.quote-word {
+  display: inline-block;
+  margin: 0 0.12em;
+  opacity: 0.18;
+  transform: translateY(12px);
+  will-change: opacity, transform, color;
+}
+
+.quote-word--highlight {
+  color: var(--accent-crimson);
+  text-shadow: 0 0 24px rgba(229, 9, 20, 0.4);
+}
+
+.quote-context {
+  max-width: 680px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.875rem;
+}
+
+.quote-author {
+  font-family: var(--font-mono);
+  font-size: 0.8125rem;
+  font-style: normal;
+  color: var(--accent-crimson);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  font-weight: 600;
+}
+
+.quote-author em {
+  color: var(--text-muted);
+  font-style: italic;
+}
+
+.quote-principle {
+  font-family: var(--font-sans);
+  font-size: 1rem;
+  line-height: 1.7;
+  color: var(--text-secondary);
+}
+
+/* ==========================================================================
+   TECHNICAL ARSENAL STREAM LAYOUT
+   ========================================================================== */
+
+.stack-stream {
   display: grid;
-  grid-template-columns: repeat(12, 1fr);
-  gap: var(--space-xl);
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 2rem;
+  margin-top: var(--space-xl);
 }
 
-.system-card--featured {
-  grid-column: span 12;
+.stack-stream__col {
+  display: flex;
+  flex-direction: column;
+  padding: 1.5rem;
+  background-color: rgba(255, 255, 255, 0.015);
+  border: 1px solid var(--border-hairline);
+  border-radius: 4px;
+  transition: border-color var(--transition-fast), background-color var(--transition-fast);
 }
 
-.system-card--standard {
-  grid-column: span 6;
+.stack-stream__col:hover {
+  border-color: var(--border-card-hover);
+  background-color: rgba(255, 255, 255, 0.03);
 }
 
-@media (max-width: 860px) {
-  .system-card--standard {
-    grid-column: span 12;
-  }
+.stack-stream__header {
+  display: flex;
+  align-items: center;
+  gap: 0.625rem;
+  padding-bottom: 0.75rem;
+  border-bottom: 1px solid var(--border-subtle);
+  margin-bottom: 1.25rem;
+}
+
+.stack-stream__title {
+  font-family: var(--font-heading);
+  font-size: 1rem;
+  font-weight: 800;
+  color: #ffffff;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.stack-stream__list {
+  display: flex;
+  flex-direction: column;
+  gap: 1.125rem;
+}
+
+.stack-stream__item {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+}
+
+.stack-stream__item-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.stack-stream__item-name {
+  font-family: var(--font-mono);
+  font-size: 0.8125rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  letter-spacing: 0.02em;
+}
+
+.stack-stream__item-desc {
+  font-size: 0.75rem;
+  color: var(--text-muted);
+  line-height: 1.45;
 }
 
 /* ==========================================================================

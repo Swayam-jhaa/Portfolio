@@ -184,6 +184,10 @@ section[id] {
   font-family: var(--font-mono);
 }
 
+.font-quote {
+  font-family: var(--font-quote);
+}
+
 /* Glassmorphism & Surface Elevation Utilities */
 .glass-panel {
   background-color: var(--bg-glass);
