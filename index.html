@@ -16,10 +16,10 @@
   <meta property="og:description" content="Engineering high-throughput APIs, asynchronous worker architectures, and production retrieval pipelines — built from the inside out with offensive security discipline.">
   <meta property="og:type" content="website">
 
-  <!-- Google Fonts: Anton (Display), Syne (Headings), Plus Jakarta Sans (Body), JetBrains Mono (Telemetry) -->
+  <!-- Google Fonts: Anton (Display), Syne (Headings), Plus Jakarta Sans (Body), JetBrains Mono (Telemetry), Caveat (Editorial Cursive) -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Anton&family=JetBrains+Mono:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Syne:wght@700;800;900&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Anton&family=Caveat:wght@600&family=JetBrains+Mono:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Syne:wght@700;800;900&display=swap" rel="stylesheet">
 
   <!-- Core Stylesheets -->
   <link rel="stylesheet" href="css/tokens.css">
@@ -115,58 +115,90 @@
   <main id="main-content">
 
     <!-- =======================================================================
-         SECTION 1: HERO (Strictly NO Boxes, Straight Text, 3D Layered Depth)
+         SECTION 1: HERO (Rayhan Aditya Signature Layout — Large Scale, Unboxed, Static Stage)
          ======================================================================= -->
     <section class="hero" id="hero">
-      <!-- Ambient Lights -->
+      <!-- Ambient Lights (Crimson Void Glow) -->
       <div class="hero__ambient-light" id="hero-ambient-light"></div>
-      <div class="hero__cyan-accent"></div>
 
-      <!-- 3D Spatial Stage: Giant Text BEHIND Swayam's Cutout -->
-      <div class="hero__stage" id="hero-stage">
-        <!-- Layer 1: Giant Text Sits BEHIND the person -->
-        <div class="hero__behind-text" id="hero-behind-text" title="Click to cycle word">
-          <span class="hero__behind-word" id="hero-behind-word">SWAYAM</span>
+      <!-- Top Sub-Header Strip (Inside Hero) -->
+      <div class="container hero__top-strip hero-drop-in" style="--delay: 0">
+        <div class="hero__roles-meta">
+          <span class="hero__role-tag">BACKEND ARCHITECT</span>
+          <span class="hero__role-separator">/</span>
+          <span class="hero__role-tag-muted">AI SYSTEMS ENGINEER</span>
+        </div>
+        <div class="hero__availability-badge">
+          <span class="hero__spark-icon">✦</span>
+          <span>AVAILABLE FOR ROLES &amp; CONTRACTS</span>
+        </div>
+      </div>
+
+      <!-- Hero Main Showcase Canvas -->
+      <div class="hero__showcase">
+        <!-- Giant Crimson Background Display Text (PORTFOLIO / SWAYAM) -->
+        <div class="hero__giant-bg-text" id="hero-behind-text" aria-hidden="true" title="Click to toggle word">
+          <span class="hero__giant-word" id="hero-behind-word">PORTFOLIO</span>
         </div>
 
-        <!-- Layer 2: Swayam's Real Animated Portrait (Transparent Cutout) -->
-        <div class="hero__portrait-container" id="hero-portrait">
+        <!-- Static Center Portrait Cutout (High Scale, No Mouse Tilt) -->
+        <div class="hero__portrait-wrapper" id="hero-portrait">
           <img 
             src="assets/images/swayam_editorial_cutout.png" 
             alt="Swayam Jha — Backend & AI Systems Engineer" 
             class="hero__portrait-img"
           />
         </div>
-      </div>
 
-      <!-- Layer 3: Pure Straight Text (NO BOXES, NO CARD BORDERS, CENTERED EDITORIAL) -->
-      <div class="container hero__content">
-        <div class="hero__eyebrow-straight">
-          <span class="navbar__pulse-dot"></span>
-          <span>SYSTEMS ARCHITECT &amp; AI ENGINEER</span>
-        </div>
+        <!-- Overlapping Foreground Columns (Left Flank + Right Flank) -->
+        <div class="container hero__columns-grid">
+          <!-- Left Flank: Name, Greeting, Bio & Actions -->
+          <div class="hero__left-flank hero-drop-in" style="--delay: 1">
+            <span class="hero__cursive-greeting">Hello, I'm</span>
+            <h1 class="hero__name-title">
+              <span class="hero__name-first">SWAYAM</span>
+              <span class="hero__name-last">JHA</span>
+            </h1>
+            <div class="hero__badge-role">BACKEND &amp; AI SYSTEMS ENGINEER</div>
+            <p class="hero__editorial-bio">
+              I design and build resilient distributed architectures, async worker queues, and production AI retrieval pipelines. Engineered beyond the happy path.
+            </p>
+            <div class="hero__location-badge">
+              <span class="hero__location-dot"></span>
+              <span>B.TECH EE (VLSI) · DELHI, INDIA</span>
+            </div>
+            <div class="hero__cta-group">
+              <a href="#systems" class="btn btn--primary">
+                Selected Systems ↓
+              </a>
+              <a href="mailto:swayamjhaofficial@gmail.com" class="btn btn--secondary">
+                Get In Touch ↗
+              </a>
+            </div>
+          </div>
 
-        <h1 class="hero__headline-straight">
-          BACKEND &amp; <span class="hero__headline-accent">AI SYSTEMS</span> ENGINEER
-        </h1>
+          <!-- Right Flank: Vision Quote & Key Metrics Stack -->
+          <div class="hero__right-flank hero-drop-in" style="--delay: 2">
+            <div class="hero__vision-quote">
+              <span class="hero__spark-icon">✦</span>
+              <p>Turning complex asynchronous architectures into resilient distributed engines.</p>
+            </div>
 
-        <p class="hero__subline-straight">
-          Engineering high-throughput APIs, asynchronous worker architectures, and production retrieval pipelines — built from the inside out with offensive security discipline.
-        </p>
-
-        <div class="hero__actions-straight">
-          <a href="#systems" class="btn btn--primary">
-            Explore Systems
-            <svg class="btn__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-              <path d="M7 17L17 7M17 7H7M17 7V17"/>
-            </svg>
-          </a>
-          <a href="https://github.com/Swayam-jhaa" target="_blank" rel="noopener noreferrer" class="btn btn--secondary">
-            View GitHub Profile
-          </a>
-          <a href="#architecture" class="btn btn--outline-cyan">
-            Interactive Architecture Flow ↓
-          </a>
+            <div class="hero__metrics-stack">
+              <div class="hero__metric-item">
+                <span class="hero__metric-number">13+</span>
+                <span class="hero__metric-label">REPOSITORIES &amp;<br>OSS BUILDS</span>
+              </div>
+              <div class="hero__metric-item">
+                <span class="hero__metric-number">8+</span>
+                <span class="hero__metric-label">PRODUCTION &amp;<br>RESEARCHED SYSTEMS</span>
+              </div>
+              <div class="hero__metric-item">
+                <span class="hero__metric-number">SIH '26</span>
+                <span class="hero__metric-label">NATIONAL FINALIST<br>(PROBLEM STATEMENT PS170)</span>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </section>

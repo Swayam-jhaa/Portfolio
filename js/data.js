@@ -17,7 +17,7 @@ const PORTFOLIO_DATA = {
     pitch: 'Engineering high-throughput APIs, asynchronous worker architectures, and production retrieval pipelines — built from the inside out with offensive security discipline.'
   },
 
-  heroWords: ['SWAYAM', 'SYSTEMS', 'BACKEND', 'AI PIPELINES'],
+  heroWords: ['PORTFOLIO', 'SWAYAM', 'SYSTEMS', 'BACKEND'],
 
   nav: [
     { num: '01', label: 'SYSTEMS', href: '#systems' },

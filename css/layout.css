@@ -277,7 +277,8 @@
 }
 
 /* ==========================================================================
-   HERO SECTION (Strictly NO Boxes, Straight Text, Clean First Fold)
+/* ==========================================================================
+   HERO SECTION (Rayhan Aditya Signature Layout — Large Scale, Unboxed, Static Stage)
    ========================================================================== */
 
 .hero {
@@ -285,178 +286,332 @@
   min-height: 100vh;
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  padding-top: 4.5rem;
+  justify-content: space-between;
+  padding-top: 5rem;
   padding-bottom: 2rem;
   overflow: hidden;
   background-color: var(--bg-void);
 }
 
-/* Ambient Radial Lights */
+/* Ambient Radial Glow */
 .hero__ambient-light {
   position: absolute;
-  top: 38%;
+  top: 40%;
   left: 50%;
   transform: translate(-50%, -50%);
-  width: 650px;
-  height: 650px;
+  width: 850px;
+  height: 850px;
   border-radius: 50%;
-  background: radial-gradient(circle, rgba(255, 30, 39, 0.2) 0%, rgba(255, 30, 39, 0.04) 50%, transparent 70%);
-  filter: blur(75px);
+  background: radial-gradient(circle, rgba(229, 9, 20, 0.18) 0%, rgba(229, 9, 20, 0.03) 55%, transparent 75%);
+  filter: blur(80px);
   pointer-events: none;
   z-index: 0;
 }
 
-.hero__cyan-accent {
-  position: absolute;
-  top: 30%;
-  right: 18%;
-  width: 300px;
-  height: 300px;
-  border-radius: 50%;
-  background: radial-gradient(circle, rgba(0, 240, 255, 0.12) 0%, transparent 65%);
-  filter: blur(60px);
-  pointer-events: none;
-  z-index: 0;
-}
-
-/* 3D Hero Stage (Spatial Sandwich) */
-.hero__stage {
-  position: relative;
-  z-index: 10;
-  width: 100%;
-  max-width: 960px;
-  height: clamp(340px, 44vh, 480px);
-  margin-left: auto;
-  margin-right: auto;
+/* Top Sub-Header Strip (Inside Hero) */
+.hero__top-strip {
   display: flex;
   align-items: center;
-  justify-content: center;
-  perspective: 1200px;
+  justify-content: space-between;
+  padding-top: 1.25rem;
+  padding-bottom: 1.25rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+  z-index: 25;
+  position: relative;
 }
 
-@media (max-width: 768px) {
-  .hero__stage {
-    height: 320px;
-  }
-}
-
-/* Layer 1: Behind-the-Subject Titan Text */
-.hero__behind-text {
-  position: absolute;
-  inset: 0;
+.hero__roles-meta {
   display: flex;
   align-items: center;
-  justify-content: center;
-  z-index: 1;
-  pointer-events: auto;
-  user-select: none;
-  cursor: pointer;
-  will-change: transform;
+  gap: 0.5rem;
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  letter-spacing: 0.14em;
+  font-weight: 600;
 }
 
-.hero__behind-word {
-  font-family: var(--font-display);
-  font-size: clamp(5.5rem, 15vw, 13.5rem);
-  font-weight: 900;
-  line-height: 0.88;
-  letter-spacing: -0.04em;
-  text-transform: uppercase;
-  color: #ffffff;
-  text-align: center;
-  white-space: nowrap;
-  opacity: 0.95;
-  text-shadow: 
-    -2.5px 0 0 rgba(0, 240, 255, 0.65),
-    2.5px 0 0 rgba(255, 30, 39, 0.75),
-    0 15px 40px rgba(0, 0, 0, 0.9);
-  transition: opacity 0.15s ease, transform 0.15s ease;
+.hero__role-tag {
+  color: var(--accent-crimson);
 }
 
-/* Layer 2: Subject Cutout Portrait */
-.hero__portrait-container {
+.hero__role-separator {
+  color: var(--text-dim);
+}
+
+.hero__role-tag-muted {
+  color: var(--text-muted);
+}
+
+.hero__availability-badge {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  letter-spacing: 0.12em;
+  color: var(--text-secondary);
+}
+
+.hero__spark-icon {
+  color: var(--accent-crimson);
+  font-size: 0.875rem;
+  display: inline-block;
+}
+
+/* Hero Main Showcase Canvas */
+.hero__showcase {
   position: relative;
-  z-index: 2;
-  width: 100%;
-  max-width: 440px;
-  height: 100%;
+  flex: 1;
   display: flex;
   align-items: flex-end;
   justify-content: center;
-  will-change: transform;
+  min-height: clamp(540px, 74vh, 780px);
+  margin-top: 0.5rem;
+}
+
+/* Giant Crimson Background Display Text (PORTFOLIO / SWAYAM) */
+.hero__giant-bg-text {
+  position: absolute;
+  top: 6%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100%;
+  max-width: 1400px;
+  text-align: center;
+  z-index: 1;
+  pointer-events: auto;
+  cursor: pointer;
+  user-select: none;
+}
+
+.hero__giant-word {
+  font-family: var(--font-display);
+  font-size: clamp(6.5rem, 18vw, 17.5rem);
+  font-weight: 900;
+  line-height: 0.82;
+  letter-spacing: -0.04em;
+  text-transform: uppercase;
+  color: var(--accent-crimson);
+  opacity: 0.92;
+  display: block;
+  text-shadow: 0 0 70px rgba(229, 9, 20, 0.4);
+  transition: opacity 0.2s ease, transform 0.2s ease;
+}
+
+/* Static Center Portrait Cutout (High Scale, No Mouse Tilt) */
+.hero__portrait-wrapper {
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 10;
+  width: 100%;
+  max-width: 530px;
+  height: 94%;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
   pointer-events: none;
 }
 
 .hero__portrait-img {
-  max-height: 98%;
+  max-height: 100%;
   max-width: 100%;
   object-fit: contain;
-  filter: drop-shadow(0 15px 35px rgba(0, 0, 0, 0.95));
-  transition: transform var(--transition-base);
+  filter: drop-shadow(0 20px 50px rgba(0, 0, 0, 0.98));
   pointer-events: auto;
 }
 
-.hero__portrait-img:hover {
-  transform: scale(1.015);
-}
-
-/* Layer 3: Pure Straight Text (NO BOXES, NO CONTAINERS, CENTERED EDITORIAL) */
-.hero__content {
+/* Overlapping Foreground Columns Grid */
+.hero__columns-grid {
   position: relative;
   z-index: 20;
-  max-width: 840px;
-  margin-top: 0.5rem;
-  margin-left: auto;
-  margin-right: auto;
-  text-align: center;
+  display: grid;
+  grid-template-columns: 1.15fr 0.85fr;
+  align-items: flex-end;
+  justify-content: space-between;
+  width: 100%;
+  padding-bottom: 2.25rem;
+  pointer-events: none;
 }
 
-.hero__eyebrow-straight {
+.hero__left-flank,
+.hero__right-flank {
+  pointer-events: auto;
+}
+
+/* Left Flank */
+.hero__left-flank {
+  max-width: 480px;
+}
+
+.hero__cursive-greeting {
+  font-family: var(--font-script);
+  font-size: clamp(2.25rem, 3.8vw, 3.5rem);
+  color: #ffffff;
+  display: block;
+  margin-bottom: -0.6rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  opacity: 0.95;
+}
+
+.hero__name-title {
+  font-family: var(--font-display);
+  font-size: clamp(3.75rem, 7.5vw, 6.5rem);
+  font-weight: 900;
+  line-height: 0.88;
+  letter-spacing: -0.03em;
+  text-transform: uppercase;
+  color: #ffffff;
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 0.85rem;
+}
+
+.hero__badge-role {
   font-family: var(--font-mono);
   font-size: 0.8125rem;
-  font-weight: 600;
+  font-weight: 700;
+  letter-spacing: 0.14em;
   text-transform: uppercase;
-  letter-spacing: 0.16em;
   color: var(--accent-crimson);
-  margin-bottom: 0.25rem;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: var(--space-sm);
+  margin-bottom: 0.85rem;
 }
 
-.hero__headline-straight {
-  font-family: var(--font-display);
-  font-size: clamp(2rem, 4.5vw, 3.75rem);
-  font-weight: 900;
-  text-transform: uppercase;
-  line-height: 1.05;
-  letter-spacing: -0.02em;
-  color: var(--text-primary);
-  margin-bottom: 0.5rem;
-}
-
-.hero__headline-accent {
-  color: var(--text-primary);
-  -webkit-text-stroke: 1.5px var(--accent-crimson);
-}
-
-.hero__subline-straight {
-  font-size: clamp(0.9375rem, 1.4vw, 1.0625rem);
+.hero__editorial-bio {
+  font-size: 0.9375rem;
   color: var(--text-secondary);
-  line-height: 1.6;
-  max-width: 680px;
-  margin-left: auto;
-  margin-right: auto;
+  line-height: 1.65;
   margin-bottom: 1.25rem;
+  max-width: 440px;
 }
 
-.hero__actions-straight {
+.hero__location-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  letter-spacing: 0.1em;
+  color: var(--text-muted);
+  margin-bottom: 1.75rem;
+}
+
+.hero__location-dot {
+  width: 7px;
+  height: 7px;
+  background-color: var(--accent-crimson);
+  border-radius: 50%;
+}
+
+.hero__cta-group {
   display: flex;
   align-items: center;
-  justify-content: center;
+  gap: 1rem;
   flex-wrap: wrap;
-  gap: var(--space-md);
+}
+
+/* Right Flank */
+.hero__right-flank {
+  margin-left: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  text-align: right;
+  max-width: 360px;
+}
+
+.hero__vision-quote {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.5rem;
+  font-size: 0.875rem;
+  color: var(--text-secondary);
+  line-height: 1.55;
+  margin-bottom: 4rem;
+  text-align: right;
+}
+
+.hero__vision-quote p {
+  color: var(--text-muted);
+}
+
+.hero__metrics-stack {
+  display: flex;
+  flex-direction: column;
+  gap: 1.75rem;
+  text-align: right;
+}
+
+.hero__metric-item {
+  display: flex;
+  align-items: baseline;
+  justify-content: flex-end;
+  gap: 0.875rem;
+}
+
+.hero__metric-number {
+  font-family: var(--font-display);
+  font-size: clamp(2.5rem, 4vw, 3.5rem);
+  font-weight: 900;
+  line-height: 0.9;
+  color: var(--accent-crimson);
+}
+
+.hero__metric-label {
+  font-family: var(--font-mono);
+  font-size: 0.6875rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  color: var(--text-muted);
+  line-height: 1.35;
+  text-align: left;
+}
+
+/* Drop-In Entrance Animation (Text falls into place) */
+@keyframes dropIntoPlace {
+  0% {
+    opacity: 0;
+    transform: translateY(-24px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.hero-drop-in {
+  animation: dropIntoPlace 0.85s cubic-bezier(0.16, 1, 0.3, 1) backwards;
+  animation-delay: calc(var(--delay, 0) * 0.16s + 0.1s);
+}
+
+/* Responsive Breakpoints */
+@media (max-width: 992px) {
+  .hero__columns-grid {
+    grid-template-columns: 1fr;
+    gap: 2.5rem;
+    padding-bottom: 1.5rem;
+  }
+  
+  .hero__portrait-wrapper {
+    opacity: 0.45;
+  }
+
+  .hero__right-flank {
+    align-items: flex-start;
+    text-align: left;
+    margin-left: 0;
+  }
+
+  .hero__vision-quote {
+    text-align: left;
+    margin-bottom: 2rem;
+  }
+
+  .hero__metric-item {
+    justify-content: flex-start;
+  }
 }
 
 /* ==========================================================================
@@ -489,7 +644,7 @@
 
 .arch-section {
   position: relative;
-  background-color: #080a11;
+  background-color: var(--bg-void);
   border-top: 1px solid var(--border-subtle);
   border-bottom: 1px solid var(--border-subtle);
   overflow: hidden;
@@ -498,7 +653,7 @@
 .arch-canvas-container {
   width: 100%;
   position: relative;
-  background-color: #0b0e17;
+  background-color: #08090d;
   border: 1px solid var(--border-subtle);
   padding: var(--space-xl) var(--space-md);
   margin-top: var(--space-lg);
@@ -557,7 +712,7 @@
    ========================================================================== */
 
 .sih-spotlight {
-  background: linear-gradient(135deg, #0f1320 0%, #080a10 100%);
+  background: linear-gradient(135deg, #0b0d13 0%, #060709 100%);
   border: 1px solid var(--border-medium);
   padding: var(--space-2xl);
   position: relative;

@@ -3,37 +3,39 @@
    ========================================================================== */
 
 :root {
-  /* --- Canvas & Surface Colors --- */
+  /* --- Canvas & Surface Colors (Pure Obsidian Void — No Blue Wash) --- */
   --bg-void: #060709;
-  --bg-surface: #0c0f17;
-  --bg-surface-elevated: #121624;
-  --bg-surface-hover: #191f32;
+  --bg-surface: #090a0e;
+  --bg-surface-elevated: #0f1017;
+  --bg-surface-hover: #151720;
 
-  /* --- Accent Colors (Reference Inspired & Refined) --- */
-  --accent-crimson: #ff1e27;
-  --accent-crimson-glow: rgba(255, 30, 39, 0.4);
+  /* --- Accent Colors (Rayhan Aditya Crimson Signature) --- */
+  --accent-crimson: #e50914;
+  --accent-crimson-bright: #ff1e27;
+  --accent-crimson-glow: rgba(229, 9, 20, 0.35);
   --accent-vermilion: #ff3b47;
   --accent-cyan: #00f0ff;
-  --accent-cyan-glow: rgba(0, 240, 255, 0.35);
+  --accent-cyan-glow: rgba(0, 240, 255, 0.25);
   --accent-gold: #ffd23f;
 
   /* --- Typography Colors (WCAG AAA / AA Compliant) --- */
-  --text-primary: #f4f5f9;
-  --text-secondary: #c4c9d6;
-  --text-muted: #8c95a8;
-  --text-dim: #5a6478;
+  --text-primary: #ffffff;
+  --text-secondary: #c0c5d0;
+  --text-muted: #7e8696;
+  --text-dim: #4e5564;
 
-  /* --- Borders & Structural Lines --- */
-  --border-subtle: rgba(255, 255, 255, 0.08);
-  --border-medium: rgba(255, 255, 255, 0.16);
-  --border-accent: rgba(255, 30, 39, 0.4);
-  --border-cyan: rgba(0, 240, 255, 0.4);
+  /* --- Borders & Structural Lines (Subtle Hairlines) --- */
+  --border-subtle: rgba(255, 255, 255, 0.07);
+  --border-medium: rgba(255, 255, 255, 0.14);
+  --border-accent: rgba(229, 9, 20, 0.45);
+  --border-cyan: rgba(0, 240, 255, 0.35);
 
   /* --- Typography Families --- */
   --font-display: 'Anton', 'Syne', sans-serif;
   --font-heading: 'Syne', -apple-system, BlinkMacSystemFont, sans-serif;
   --font-sans: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
   --font-mono: 'JetBrains Mono', monospace;
+  --font-script: 'Caveat', 'Playfair Display', cursive, serif;
 
   /* --- Spacing System --- */
   --space-xs: 0.25rem;  /* 4px */

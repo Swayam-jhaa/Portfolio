@@ -28,53 +28,31 @@ function initNavbarScroll() {
   handleScroll();
 }
 
-/* 2. Hero 3D Perspective & Mouse Parallax */
+/* 2. Hero Ambient Movement (Static Portrait & Anchored Text) */
 function initHeroParallax() {
-  const heroStage = document.getElementById('hero-stage');
-  const portrait = document.getElementById('hero-portrait');
-  const behindText = document.getElementById('hero-behind-text');
+  // Portrait and behind-text remain strictly static as instructed
+  // (no 3D tilt or perspective shift that breaks 2D cutouts)
   const ambientLight = document.getElementById('hero-ambient-light');
+  if (!ambientLight) return;
 
-  if (!heroStage || !portrait || !behindText) return;
-
-  // Reduced motion check
   if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
 
   let targetX = 0, targetY = 0;
   let currentX = 0, currentY = 0;
-  let isHovering = false;
 
-  const onMouseMove = (e) => {
-    const rect = heroStage.getBoundingClientRect();
-    const x = ((e.clientX - rect.left) / rect.width - 0.5) * 2;
-    const y = ((e.clientY - rect.top) / rect.height - 0.5) * 2;
+  window.addEventListener('mousemove', (e) => {
+    const x = (e.clientX / window.innerWidth - 0.5) * 2;
+    const y = (e.clientY / window.innerHeight - 0.5) * 2;
     targetX = Math.max(-1, Math.min(1, x));
     targetY = Math.max(-1, Math.min(1, y));
-  };
+  }, { passive: true });
 
-  heroStage.addEventListener('mouseenter', () => { isHovering = true; });
-  heroStage.addEventListener('mousemove', onMouseMove);
-  heroStage.addEventListener('mouseleave', () => {
-    isHovering = false;
-    targetX = 0;
-    targetY = 0;
-  });
-
-  // RAF loop for buttery smooth dampening
   const render = () => {
-    currentX += (targetX - currentX) * 0.08;
-    currentY += (targetY - currentY) * 0.08;
+    currentX += (targetX - currentX) * 0.05;
+    currentY += (targetY - currentY) * 0.05;
 
-    // Portrait 3D tilt
-    portrait.style.transform = `perspective(1000px) rotateY(${currentX * 6}deg) rotateX(${-currentY * 6}deg) translateZ(25px)`;
-
-    // Counter-shift behind text for depth
-    behindText.style.transform = `translate(${currentX * -18}px, ${currentY * -18}px)`;
-
-    // Shift ambient halo
-    if (ambientLight) {
-      ambientLight.style.transform = `translate(calc(-50% + ${currentX * 25}px), calc(-50% + ${currentY * 25}px))`;
-    }
+    // Only subtly drift the ambient crimson background halo
+    ambientLight.style.transform = `translate(calc(-50% + ${currentX * 18}px), calc(-50% + ${currentY * 18}px))`;
 
     requestAnimationFrame(render);
   };
