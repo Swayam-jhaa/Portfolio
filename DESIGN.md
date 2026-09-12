@@ -1,274 +1,142 @@
-# design.md
-# Swayam Jha Portfolio Design Reference
+# DESIGN.md — Executive Design System Specification
 
-## 1) Purpose
-This file is the design source of truth for the portfolio rebuild.
-Use it to preserve the Stitch structure, define the visual system, and map each screen to its intended role.
-The goal is to keep the site recognizably based on the Stitch export while making it feel more premium, more focused, and more animated.
+> **Discipline**: High-Impact Modern Systems Engineering Portfolio  
+> **Target Persona**: Swayam Jha — Backend & AI Systems Engineer  
+> **Audience**: Engineering Executives, Technical Hiring Managers, Recruiters, and Systems Architects  
+> **Core Objective**: Marry the graphic-novel kinetic energy (cinematic crimson lighting, halftone textures, chromatic dispersion, bold grotesque typography) with uncompromising engineering professionalism, production technical proof, and clean content presentation.
 
-## 2) Project Metadata
-- Project title: Swayam Jha Portfolio
-- Stitch project ID: 11024833864907380425
-- Primary style: dark technical portfolio with neon-green cyber accents
-- Primary voice: security-focused, direct, confident, polished
-- Brand personality: precise, analytical, modern, slightly sharp around the edges
+---
 
-## 3) Source Inputs
-Use these as the project references:
-- Stitch export screens and assets
-- GitHub profile: Swayam-jhaa
-- Existing portfolio content and visuals
-- Your own screenshots and downloaded images from Stitch
-- Any logos or icons already present in the export
+## 1. Design Ethos & Anti-Patterns Eliminated
 
-## 4) GitHub Profile Facts to Reflect
-Use these facts as content anchors when improving the site:
-- Name: Swayam Jha
-- Role line: Security Researcher · Web Pentester · B.Tech CSE
-- Tagline: Breaking applications to understand them better.
-- About: focused on web security and offensive testing
-- Skills: Burp Suite, Nmap, Wireshark, Metasploit, OWASP, Python, JavaScript, C++, Bash, Node.js, MySQL, MongoDB, Linux, Kali
-- Projects: SENTINEL-SCAN, Recon-Lite, DeCognito, Password-Checker
-- Pinned repos: CameraCanvas, DeCognito, Password-Checker, Recon-Lite, SENTINEL-SCAN
+### 1.1 Eliminated Flaws & Slop (Strict Bans)
+| Banned Anti-Pattern | Reason for Removal | Professional Replacement |
+| :--- | :--- | :--- |
+| **Cartoon / Caricature Avatar** | Looked like generic AI cartoon slop, completely lacked authenticity. | **Swayam's Real Portrait** (`Real image/file_...png`) — authentic, graphic-novel grade, cinematic lighting, sunglasses, red circular halo. |
+| **Fake Sci-Fi Jargon** (`earth-1610`, `dimension id: 1610`, `24 fps sync`) | Frivolous and distracting; signals hobbyist rather than enterprise engineer. | **Clean Breathing Room or Real Telemetry** (`Python · FastAPI · AsyncIO · RAG`, or empty space). |
+| **Comic Gimmicks** (`*THWIP!*`, speech bubbles) | Juvenile comic cliches inappropriate for corporate hiring managers. | **Clean architectural badges & metric callouts** (e.g. `SIH 2026 Finalist`, `Sub-16ms Latency`). |
+| **Audio SFX & "Transmit" Buttons** | Annoying web audio synthesizers and non-standard action labels hurt UX. | **Standard, frictionless CTAs**: `[ Explore Systems → ]`, `[ View GitHub ]`, `[ Contact Directly ]`. |
+| **Hero Card Containers / Box Wrappers** | Bounding boxes and card outlines in the first fold create visual clutter. | **Straight, confident typography** with spatial depth and no box borders. |
 
-## 5) Visual Direction
-### Overall mood
-- Dark, controlled, high-contrast
-- Security lab aesthetic, not gaming neon
-- Minimal layout noise
-- Feels like a tool used by someone who knows exactly what they are doing
+---
 
-### Surface treatment
-- Deep charcoal backgrounds
-- Subtle dotted grid or grain texture
-- Soft borders with low-opacity green glow
-- Glass-like panels only where needed
-- No excessive blur
-- No random gradients that look decorative instead of intentional
+## 2. Color Palette & Visual System
 
-### Accent usage
-- Use neon green as the primary accent
-- Use white or near-white for key headings
-- Use muted gray for secondary text
-- Use red sparingly only for warnings, errors, or danger states
+Inspired by the chromatic tension of the reference, calibrated for executive-grade readability and contrast.
 
-## 6) Suggested Color System
-- Background base: #050607 or similar near-black
-- Surface 1: #0B0F10
-- Surface 2: #101617
-- Border subtle: rgba(255,255,255,0.06)
-- Primary accent: vivid green, used for CTA and active states
-- Secondary accent: pale green or mint for hover glow
-- Text primary: off-white
-- Text secondary: muted gray
-- Code/terminal highlight: green-on-dark with soft contrast
+### 2.1 Core Palette
 
-## 7) Typography Direction
-- Headlines: bold, compact, modern sans-serif
-- Body: highly readable sans-serif
-- Technical labels: slightly condensed or monospaced feel
-- Avoid overly playful typefaces
-- Keep line lengths short on hero text and project cards
-- Use clear hierarchy between name, role, section labels, and captions
+| Token Name | Hex Code | HSL | Semantic Function |
+| :--- | :--- | :--- | :--- |
+| **`--bg-void`** | `#060709` | `220°, 20%, 3%` | Primary canvas backdrop. Infinite depth, zero eye strain. |
+| **`--bg-surface`** | `#0D1018` | `223°, 29%, 7%` | Section backgrounds and structural panels (used *only* below the hero). |
+| **`--bg-surface-elevated`**| `#131826` | `225°, 33%, 11%` | Hover states, active tabs, and interactive card surfaces. |
+| **`--accent-crimson`** | `#FF1E27` | `358°, 100%, 56%` | Hero highlight, glowing focal accents, primary action buttons, rim lighting. |
+| **`--accent-vermilion`**| `#FF3B47` | `356°, 100%, 62%` | Hover transitions and radial energy stops. |
+| **`--accent-cyan`** | `#00F0FF` | `184°, 100%, 50%` | Secondary chromatic offset channel, subtle telemetry points, metric values. |
+| **`--accent-gold`** | `#FFD23F` | `46°, 100%, 62%` | Milestone highlights (Smart India Hackathon 2026 Finalist badge). |
+| **`--text-primary`** | `#F4F5F9` | `230°, 20%, 97%` | Headings and primary reading copy (WCAG AAA compliant). |
+| **`--text-muted`** | `#98A2B3` | `218°, 15%, 65%` | Explanations, technical metadata, and sub-captions (WCAG AA). |
+| **`--border-subtle`** | `rgba(255, 255, 255, 0.08)` | — | Architectural lines, grid dividers, and card perimeters. |
 
-## 8) Spacing and Layout Rules
-- Prefer spacious sections with strong vertical rhythm
-- Avoid cramped card grids
-- Use consistent internal padding across panels
-- Keep alignment strict to the grid
-- Hero and section transitions should breathe
-- Mobile layout must never feel like a shrunken desktop
+---
 
-## 9) Motion Philosophy
-- Motion should feel deliberate, technical, and premium
-- Prefer staggered reveals, parallax drift, cursor-reactive elements, border tracing, and subtle section entrance effects
-- Use animation to reveal structure, not to distract from content
-- No bouncy cartoon motion
-- No overused “floaty blob” effects
-- No excessive easing that makes the site feel sluggish
+## 3. Typography Architecture
 
-## 10) Stitch Screen Inventory
-### 10.1 Home - Swayam Jha Portfolio
-- Screen ID: f6bb5e0860ec4e05bbf7a2ccca305f33
-- Role: primary landing page
-- Visual priority: name, role, short intro, CTA, selected work
-- Must feel like the most polished screen
+Pairing a massive, condensed ultra-grotesque display typeface with a modern precision geometric sans and an engineer-grade monospace.
 
-### 10.2 Dynamic Home - Swayam Jha Portfolio
-- Screen ID: c70d820493494005836635158ecd7e8f
-- Role: alternate home state with more motion/variation
-- Visual priority: dynamic hero treatment, stronger movement, higher energy
-- Use this to derive animated behavior, not a separate unrelated concept
+### 3.1 Font Families
+- **Display Typography**: `Anton` / `Syne` (900 weight) — Used for massive behind-the-subject typography, section anchors, and impactful metrics.
+- **Interface & Reading Copy**: `Plus Jakarta Sans` or `Inter` (300, 400, 500, 600, 700) — Ultra-clean legibility for project breakdowns, case studies, and engineering philosophy.
+- **Telemetry & Technical Specs**: `JetBrains Mono` (400, 500) — Code snippets, architectural parameters, benchmark metrics, and stack tags.
 
-### 10.3 Skills & About
-- Screen ID: 39e17937d3f04645ae22b50a90d1d2f2
-- Role: skills and bio presentation
-- Visual priority: about summary, skills grid, capability blocks
-- Needs clean information architecture
+### 3.2 Hierarchy & Scales
+| Level | Font Family | Size (Desktop / Mobile) | Weight | Treatment |
+| :--- | :--- | :--- | :--- | :--- |
+| **Behind-Hero Titan** | Anton | `16vw` / `20vw` | 900 | Pure white, sits *behind* the subject. Subtle chromatic shadow (`-1.5px cyan, +1.5px red`). |
+| **Hero Straight Heading** | Anton / Syne | `4.5rem` / `2.5rem` | 900 | High-contrast, clean lines, NO bounding boxes. |
+| **Hero Subtitle / Pitch** | Plus Jakarta Sans | `1.25rem` / `1.0rem` | 400 | Max width 65ch, readable leading (1.6), direct and confident. |
+| **Section Big Headers** | Anton | `3.5rem` / `2.25rem` | 900 | All-caps, tracked tight (`-0.03em`), paired with red dot or accent stroke. |
+| **Card / System Titles** | Syne | `1.75rem` / `1.35rem` | 800 | Clean uppercase or title case with hover state shift. |
+| **Technical Badges** | JetBrains Mono | `0.75rem` (12px) | 500 | Uppercase, 1px border or crisp fill, 1.5px letter spacing. |
 
-### 10.4 Skills & About
-- Screen ID: 2d9b29f120ce442cadfe516e43f96633
-- Role: alternate layout variant
-- Visual priority: same content, different composition
-- Use this to compare structure and keep the strongest hierarchy
+---
 
-### 10.5 Projects & Research
-- Screen ID: 079ebafd505e43678787a930ecd104c6
-- Role: project showcase variant one
-- Visual priority: research emphasis, technical credibility, project cards
+## 4. The Hero Section (First Page / First Fold)
 
-### 10.6 Projects & Research
-- Screen ID: a84c67318e224d439ed879b9343de256
-- Role: project showcase variant two
-- Visual priority: slightly different project arrangement and emphasis
+### 4.1 Strict Constraints
+1. **NO BOXES / CONTAINERS**: The first page must not have border wraps, card boxes, or rounded pill containers around text.
+2. **STRAIGHT TEXT**: Straightforward, razor-sharp typography arranged with clean architectural spacing.
+3. **NATURAL LAYER DEPTH ("The Sandwich")**:
+   - **Backdrop**: Void Obsidian (`#060709`) with faint halftone dot grid and ambient crimson radial halo.
+   - **Behind-Subject Typography**: Enormous text (`SWAYAM JHA` or `SYSTEMS`) rendered in Anton, spanning the full width.
+   - **Subject Portrait**: Swayam's real animated portrait (`Real image/file_...png`) seamlessly layered so the letters pass behind his head and shoulders naturally.
+   - **Foreground Text**: Straight headline, title, and concise elevator statement in front.
 
-### 10.7 Connect - Swayam Jha Portfolio
-- Screen ID: d0571cdc7a32428581957ec976f398c0
-- Role: contact / connection screen
-- Visual priority: email, social links, CTA, invitation to connect
+### 4.2 Hero Motion & Interaction
+- **Mouse Parallax**: Gentle 3D perspective shift on mouse move (`rotateX`, `rotateY`, `translateZ`) with dampening.
+- **Lighting Pulse**: Subtle red rim-light breathing animation on the portrait edge.
+- **No Heavy Gimmicks**: Preserves 100% of the authentic portrait's artistic fidelity.
 
-### 10.8 Connect - Swayam Jha Portfolio
-- Screen ID: 1c4ca3bfbe1b4a46a62dbce1eb97abe1
-- Role: alternate contact state
-- Visual priority: alternate layout or more dynamic form presentation
+---
 
-## 11) Recommended Page Structure
-### Home
-1. Top nav
-2. Hero heading
-3. Role line and microcopy
-4. Primary CTA and secondary CTA
-5. Selected work preview
-6. Short about strip
-7. Quick stats or signature capabilities
+## 5. Website Layout & Page Section Blueprint
 
-### Skills & About
-1. About intro
-2. Skill clusters
-3. Tool stack
-4. Interest areas
-5. Learning focus or current exploration
-6. Short credibility footer
+A comprehensive, company-facing portfolio structure organized into 6 cohesive sections:
 
-### Projects & Research
-1. Featured project cards
-2. Research/work methodology
-3. Tooling or security focus
-4. Project outcomes
-5. Linkable project entries
+```
++===================================================================+
+| [NAVBAR] Monogram SJ | Systems · Architecture · Stack · SIH · Contact | [GitHub / Email]
++===================================================================+
+| SECTION 1: HERO (THE FIRST FOLD)                                  |
+| - Strictly NO boxes or containers, pure straight text             |
+| - Layered composition: Massive text BEHIND Swayam's real portrait |
+| - Role: Backend & AI Systems Engineer                             |
+| - Pitch: Scalable APIs, async pipelines & production RAG          |
++===================================================================+
+| SECTION 2: FEATURED PRODUCTION SYSTEMS (WORKS)                    |
+| 1. TechPulse Intelligence (Flagship live platform on Vercel)      |
+| 2. SENTINEL-SCAN (Async ASM & Reconnaissance Queue)               |
+| 3. APRE (Agentic Pentest Reporting Multi-Agent Engine)            |
+| 4. Predicta (SIH 2026 PS170 Finalist — Aerospace Drift Forecast)  |
+| 5. CameraCanvas (Real-Time 60fps Computer Vision Whiteboard)      |
++===================================================================+
+| SECTION 3: INTERACTIVE ARCHITECTURE PIPELINE (SCROLLABLE SVG)     |
+| - Visualizing how Swayam architects distributed systems:          |
+|   Ingestion -> Async Queues (Redis/Celery) -> RAG / AI -> FastAPI  |
+| - Animated data packet flows triggered on scroll                  |
++===================================================================+
+| SECTION 4: TECHNICAL ARSENAL & BENCHMARKS (STACK)                 |
+| - Systems Languages: Python, TypeScript, C++, Bash, SQL           |
+| - Distributed & Backend: FastAPI, AsyncIO, Celery, Redis, PG      |
+| - AI Systems: RAG, Embeddings, Reranking, Multi-Agent             |
+| - Security Moat: ASM, OWASP Top 10, Zero-Trust Architecture       |
++===================================================================+
+| SECTION 5: ENGINEERING EXPERIENCE & HACKATHON ACCOLADES           |
+| - Smart India Hackathon (SIH 2026, PS170) Case Study (Predicta)   |
+| - Offensive Security Research & Bug Bounty Platform Practice      |
+| - B.Tech Electrical Engineering (EE - VLSI) Systems Foundation    |
++===================================================================+
+| SECTION 6: DIRECT CONTACT & CHANNELS                              |
+| - swayamjhaofficial@gmail.com                                     |
+| - LinkedIn & GitHub direct links                                  |
+| - Location: India · Open to Remote & Global Engineering Roles     |
++===================================================================+
+| [FOOTER] Minimalist copyright & status telemetry                  |
++===================================================================+
+```
 
-### Connect
-1. Contact heading
-2. Short invitation copy
-3. Social links
-4. Email CTA
-5. Optional form or message area
+---
 
-## 12) Component Inventory
-Build the UI with reusable pieces:
-- Navbar
-- Hero section
-- Animated text line
-- CTA button
-- Project card
-- Skill chip
-- Tool badge
-- Timeline or stat card
-- Social icon row
-- Footer
-- Section label
-- Divider / line accent
-- Scroll indicator
-- Modal or hover preview if needed
+## 6. Motion & Animation Standards
 
-## 13) Card Design Rules
-- Cards should have strong edge definition
-- Use hover lift very lightly
-- Keep card content concise
-- Include role, outcome, and tech stack where appropriate
-- Use icons only when they add clarity
-- Maintain visual consistency across all sections
-
-## 14) Portfolio Copy Tone
-- Confident, not loud
-- Technical, not jargon-heavy
-- Specific, not vague
-- No generic “passionate developer” fluff
-- Emphasize security research, problem solving, and tool building
-
-## 15) Hero Copy Direction
-Use copy that communicates:
-- who you are
-- what you do
-- what makes your portfolio different
-- why the visitor should care
-
-Suggested idea:
-- primary line: Swayam Jha
-- subline: Security Researcher · Web Pentester · B.Tech CSE
-- supporting line: Breaking applications to understand them better.
-
-## 16) Content Priorities
-The strongest content themes for the site:
-- offensive security
-- web application analysis
-- recon automation
-- tooling and scripting
-- writeups and learning by practice
-- technical rigor
-
-## 17) Image and Asset Rules
-- Use Stitch-exported images first
-- Optimize large screenshots before using them in the app
-- Prefer SVG for icons and logos
-- Compress heavy textures
-- Keep decorative assets subtle
-- Never let assets overpower the content
-
-## 18) Responsiveness
-- Mobile must preserve readability first
-- Stack cards vertically on small screens
-- Reduce motion intensity on mobile if needed
-- Keep CTA buttons reachable without scrolling too far
-- Avoid horizontal overflow
-- Maintain consistent spacing across breakpoints
-
-## 19) Accessibility
-- Maintain strong contrast
-- Use semantic headings and landmarks
-- Ensure focus states are visible
-- Make buttons and links large enough for touch
-- Do not encode meaning by color alone
-- Reduce motion for users who prefer reduced animation
-
-## 20) Motion References
-Use the Stitch export as the base direction and pull motion language from the same family of modern high-end animated portfolios.
-Motion should suggest:
-- scanned lines
-- data reveal
-- terminal activation
-- subtle tracking
-- responsive hover feedback
-- section load sequencing
-
-## 21) Visual Do Not List
-- No generic SaaS look
-- No bright pastel theme
-- No clashing neon colors
-- No decorative motion without purpose
-- No crowded hero section
-- No inconsistent border radii
-- No random shadows everywhere
-- No comic or playful icon style
-
-## 22) Success Criteria
-The design is successful when:
-- it still feels like Swayam Jha’s portfolio
-- the dark technical identity is preserved
-- the site looks more premium than the raw export
-- the content reads like a serious security portfolio
-- the layout works cleanly on desktop and mobile
-
-## 23) Final Design Note
-Treat this as a precise rebuild, not a reimagining.
-The best result is a polished version of the Stitch design with stronger composition, stronger copy, and stronger motion discipline.
+1. **Scroll-Driven SVG Architecture**:
+   - SVG dataflow paths with dynamic stroke-dashoffset animation illuminating as the user scrolls into view.
+   - Flowing light particles traveling along connection lines between components.
+2. **Text Reveal**:
+   - Staggered word-by-word or character-by-character slide up on viewport entry.
+3. **Tactile Hover States**:
+   - High-contrast color inversion, subtle chromatic offset (`-2px cyan, +2px red`), and sharp 1px border lighting.
+4. **Performance & Accessibility**:
+   - Hardware-accelerated transforms (`transform: translate3d(...)`, `opacity`).
+   - Strict `prefers-reduced-motion` fallbacks disabling parallax and intense glitches.
