@@ -1,474 +1,495 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Swayam Jha — Security Researcher · Web Pentester</title>
-  <meta name="description"
-    content="Portfolio of Swayam Jha — Security Researcher, Web Pentester, and B.Tech EE VLSI student. Focused on offensive security, recon automation, and building security tooling.">
+  <title>Swayam Jha — Backend & AI Systems Engineer</title>
+  <meta name="description" content="Portfolio of Swayam Jha — Backend & AI Systems Engineer specializing in scalable APIs, async worker architectures, and production retrieval pipelines.">
   <meta name="author" content="Swayam Jha">
-  <meta name="theme-color" content="#050505">
+  <meta name="theme-color" content="#060709">
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="assets/images/favicon.svg">
 
   <!-- Open Graph -->
-  <meta property="og:title" content="Swayam Jha — Security Researcher · Web Pentester">
-  <meta property="og:description"
-    content="Breaking applications to understand them better. Security research, offensive tooling, and web application analysis.">
+  <meta property="og:title" content="Swayam Jha — Backend & AI Systems Engineer">
+  <meta property="og:description" content="Engineering high-throughput APIs, asynchronous worker architectures, and production retrieval pipelines — built from the inside out with offensive security discipline.">
   <meta property="og:type" content="website">
 
-  <!-- Fonts -->
+  <!-- Google Fonts: Anton (Display), Syne (Headings), Plus Jakarta Sans (Body), JetBrains Mono (Telemetry) -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link
-    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=JetBrains+Mono:wght@400&family=Playfair+Display:wght@700;800&display=swap"
-    rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Anton&family=JetBrains+Mono:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Syne:wght@700;800;900&display=swap" rel="stylesheet">
 
-  <!-- Styles -->
+  <!-- Core Stylesheets -->
   <link rel="stylesheet" href="css/tokens.css">
   <link rel="stylesheet" href="css/base.css">
   <link rel="stylesheet" href="css/layout.css">
   <link rel="stylesheet" href="css/components.css">
 </head>
+<body class="bg-grid-tech">
 
-<body>
-  <!-- Skip to content -->
-  <a href="#main" class="sr-only" id="skip-link">Skip to main content</a>
+  <!-- Skip link for accessibility -->
+  <a href="#main-content" class="sr-only">Skip to main content</a>
 
-  <!-- Cursor Glow -->
+  <!-- Ambient Cursor Glow & Noise Overlay -->
   <div class="cursor-glow" id="cursor-glow" aria-hidden="true"></div>
+  <div class="noise-overlay" aria-hidden="true"></div>
 
-  <!-- ═══════════════════════════════════════
-       NAVBAR
-       ═══════════════════════════════════════ -->
-  <nav class="navbar" id="navbar" role="navigation" aria-label="Main navigation">
-    <div class="navbar__inner">
-      <a href="#hero" class="navbar__logo">0x<span>SJ</span></a>
+  <!-- =========================================================================
+       EXECUTIVE NAVBAR (Zero Gimmicks, High Precision)
+       ========================================================================= -->
+  <header class="navbar" id="navbar">
+    <div class="container navbar__inner">
+      <a href="#hero" class="navbar__brand" aria-label="Swayam Jha Home">
+        <div class="navbar__monogram">SJ</div>
+        <div class="navbar__brand-meta">
+          <div class="navbar__brand-name">
+            <span>SWAYAM JHA</span>
+            <span class="navbar__pulse-dot" title="Active"></span>
+          </div>
+          <span class="navbar__brand-role">Backend &amp; AI Systems</span>
+        </div>
+      </a>
 
-      <button class="navbar__toggle" id="nav-toggle" aria-label="Toggle navigation menu" aria-expanded="false">
-        <span class="navbar__toggle-bar"></span>
-        <span class="navbar__toggle-bar"></span>
-        <span class="navbar__toggle-bar"></span>
-      </button>
+      <!-- Desktop Links -->
+      <nav class="navbar__nav" aria-label="Primary navigation">
+        <a href="#systems" class="navbar__link">
+          <span class="navbar__link-num">01</span> SYSTEMS
+        </a>
+        <a href="#architecture" class="navbar__link">
+          <span class="navbar__link-num">02</span> ARCHITECTURE
+        </a>
+        <a href="#stack" class="navbar__link">
+          <span class="navbar__link-num">03</span> STACK
+        </a>
+        <a href="#research" class="navbar__link">
+          <span class="navbar__link-num">04</span> SIH &amp; RESEARCH
+        </a>
+        <a href="#contact" class="navbar__link">
+          <span class="navbar__link-num">05</span> CONTACT
+        </a>
+      </nav>
 
-      <div class="navbar__links" id="nav-links" role="menubar">
-        <a href="#hero" class="navbar__link navbar__link--active" role="menuitem" data-nav="hero">Home</a>
-        <a href="#about" class="navbar__link" role="menuitem" data-nav="about">About</a>
-        <a href="#skills" class="navbar__link" role="menuitem" data-nav="skills">Skills</a>
-        <a href="#projects" class="navbar__link" role="menuitem" data-nav="projects">Projects</a>
-        <a href="#connect" class="navbar__link" role="menuitem" data-nav="connect">Connect</a>
+      <!-- Actions -->
+      <div class="navbar__actions">
+        <a href="mailto:swayamjhaofficial@gmail.com" class="btn btn--primary btn--sm">
+          Get In Touch
+        </a>
+        <a href="https://github.com/Swayam-jhaa" target="_blank" rel="noopener noreferrer" class="btn btn--secondary btn--sm" aria-label="GitHub Profile">
+          <svg class="btn__icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+            <path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/>
+          </svg>
+        </a>
+        <button class="navbar__toggle" id="nav-toggle" aria-label="Toggle navigation menu">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <line x1="3" y1="12" x2="21" y2="12"></line>
+            <line x1="3" y1="6" x2="21" y2="6"></line>
+            <line x1="3" y1="18" x2="21" y2="18"></line>
+          </svg>
+        </button>
       </div>
     </div>
-  </nav>
+  </header>
 
-  <!-- ═══════════════════════════════════════
+  <!-- Mobile Menu Overlay -->
+  <div class="mobile-menu" id="mobile-menu">
+    <button id="mobile-menu-close" style="position:absolute; top:2rem; right:2rem; background:transparent; border:none; color:white; cursor:pointer;" aria-label="Close menu">
+      <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <line x1="18" y1="6" x2="6" y2="18"></line>
+        <line x1="6" y1="6" x2="18" y2="18"></line>
+      </svg>
+    </button>
+    <div class="mobile-menu__links">
+      <a href="#systems" class="mobile-menu__link"><span>01</span> Systems</a>
+      <a href="#architecture" class="mobile-menu__link"><span>02</span> Architecture</a>
+      <a href="#stack" class="mobile-menu__link"><span>03</span> Stack</a>
+      <a href="#research" class="mobile-menu__link"><span>04</span> SIH &amp; Research</a>
+      <a href="#contact" class="mobile-menu__link"><span>05</span> Contact</a>
+    </div>
+  </div>
+
+  <!-- =========================================================================
        MAIN CONTENT
-       ═══════════════════════════════════════ -->
-  <main id="main">
+       ========================================================================= -->
+  <main id="main-content">
 
-    <!-- ─── HERO ─── -->
-    <section class="hero section section--first" id="hero">
-      <!-- Vanta.js Globe Background -->
-      <div class="hero__vanta" id="vanta-bg" aria-hidden="true"></div>
-      <div class="hero__vanta-overlay" aria-hidden="true"></div>
+    <!-- =======================================================================
+         SECTION 1: HERO (Strictly NO Boxes, Straight Text, 3D Layered Depth)
+         ======================================================================= -->
+    <section class="hero" id="hero">
+      <!-- Ambient Lights -->
+      <div class="hero__ambient-light" id="hero-ambient-light"></div>
+      <div class="hero__cyan-accent"></div>
 
-      <div class="hero__bg" aria-hidden="true">
-        <div class="hero__grid-pattern"></div>
-        <div class="hero__scanline"></div>
+      <!-- 3D Spatial Stage: Giant Text BEHIND Swayam's Cutout -->
+      <div class="hero__stage" id="hero-stage">
+        <!-- Layer 1: Giant Text Sits BEHIND the person -->
+        <div class="hero__behind-text" id="hero-behind-text" title="Click to cycle word">
+          <span class="hero__behind-word" id="hero-behind-word">SWAYAM</span>
+        </div>
+
+        <!-- Layer 2: Swayam's Real Animated Portrait (Transparent Cutout) -->
+        <div class="hero__portrait-container" id="hero-portrait">
+          <img 
+            src="assets/images/swayam_editorial_cutout.png" 
+            alt="Swayam Jha — Backend & AI Systems Engineer" 
+            class="hero__portrait-img"
+          />
+        </div>
       </div>
 
+      <!-- Layer 3: Pure Straight Text (NO BOXES, NO CARD BORDERS, CENTERED EDITORIAL) -->
       <div class="container hero__content">
-        <p class="label-caps hero__label" data-animate="fade-up">Security Researcher & Pentester</p>
+        <div class="hero__eyebrow-straight">
+          <span class="navbar__pulse-dot"></span>
+          <span>SYSTEMS ARCHITECT &amp; AI ENGINEER</span>
+        </div>
 
-        <h1 class="hero__name" id="hero-name">
-          <!-- Characters injected by JS for stagger animation -->
-          <span class="hero__name-char">S</span><span class="hero__name-char">w</span><span
-            class="hero__name-char">a</span><span class="hero__name-char">y</span><span
-            class="hero__name-char">a</span><span class="hero__name-char">m</span><span
-            class="hero__name-char">&nbsp;</span><span class="hero__name-char">J</span><span
-            class="hero__name-char">h</span><span class="hero__name-char">a</span>
+        <h1 class="hero__headline-straight">
+          BACKEND &amp; <span class="hero__headline-accent">AI SYSTEMS</span> ENGINEER
         </h1>
 
-        <p class="hero__role" id="hero-role">Security Researcher · Web Pentester · B.Tech EE VLSI</p>
-
-        <p class="hero__tagline" id="hero-tagline">Breaking applications to understand them better. Focused on offensive
-          security, recon automation, and building tools that make testing sharper.</p>
-
-        <div class="hero__ctas" id="hero-ctas">
-          <a href="#projects" class="btn btn--primary" id="cta-projects">
-            View Projects
-            <svg class="btn__icon" viewBox="0 0 24 24" aria-hidden="true">
-              <path d="M7 17L17 7M17 7H7M17 7V17" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                stroke-linejoin="round" />
-            </svg>
-          </a>
-          <a href="https://github.com/Swayam-jhaa" class="btn btn--secondary" target="_blank" rel="noopener noreferrer"
-            id="cta-github">
-            GitHub
-            <svg class="btn__icon" viewBox="0 0 24 24" aria-hidden="true">
-              <path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6M15 3h6v6M10 14L21 3" stroke="currentColor"
-                stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
-            </svg>
-          </a>
-        </div>
-
-        <div class="hero__stats" id="hero-stats">
-          <div class="hero__stat">
-            <span class="hero__stat-value" data-count="8">0</span>
-            <span class="hero__stat-label">Repositories</span>
-          </div>
-          <div class="hero__stat">
-            <span class="hero__stat-value" data-count="5">0</span>
-            <span class="hero__stat-label">Security Tools</span>
-          </div>
-          <div class="hero__stat">
-            <span class="hero__stat-value">∞</span>
-            <span class="hero__stat-label">Bugs To Find</span>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- ─── QUOTE: Nietzsche ─── -->
-    <div class="quote-divider" data-animate="fade-up">
-      <div class="container">
-        <p class="quote-divider__text">He who fights with monsters might take care lest he thereby become a monster. And
-          if you gaze long into an abyss, the abyss also gazes into you.<span class="quote-divider__author">— Friedrich
-            Nietzsche</span></p>
-      </div>
-    </div>
-
-    <!-- ─── ABOUT ─── -->
-    <section class="section" id="about">
-      <div class="container">
-        <div class="section__label" data-animate="fade-up">
-          <span class="section__label-line"></span>
-          <span class="section__label-text">About</span>
-        </div>
-
-        <div class="about__content">
-          <div class="about__text" data-animate="fade-up">
-            <p>I focus on web security and offensive testing — finding vulnerabilities in applications, understanding
-              how they break, and building tools that make the process sharper.</p>
-            <p>My work sits at the intersection of security research and practical engineering. I write recon
-              automation, build scanning pipelines, and document my findings through detailed writeups.</p>
-            <p>Currently deepening my knowledge through hands-on practice on <strong>TryHackMe</strong> and
-              <strong>PortSwigger Web Security Academy</strong>, with a focus on authentication attacks, API security,
-              and server-side exploitation.</p>
-          </div>
-
-          <div class="about__focus" data-animate="fade-up" data-delay="200">
-            <span class="about__focus-title">Current Focus</span>
-            <div class="about__focus-item">
-              <span class="about__focus-dot"></span>
-              Web Application Security
-            </div>
-            <div class="about__focus-item">
-              <span class="about__focus-dot"></span>
-              Offensive Testing
-            </div>
-            <div class="about__focus-item">
-              <span class="about__focus-dot"></span>
-              Recon Automation
-            </div>
-            <div class="about__focus-item">
-              <span class="about__focus-dot"></span>
-              Vulnerability Research
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- ─── SKILLS ─── -->
-    <section class="section" id="skills">
-      <div class="container">
-        <div class="section__label" data-animate="fade-up">
-          <span class="section__label-line"></span>
-          <span class="section__label-text">Skills & Tools</span>
-        </div>
-
-        <div class="skills__grid">
-          <!-- Security -->
-          <div class="skills__group" data-animate="fade-up">
-            <div class="skills__group-header">
-              <div class="skills__group-icon">🛡️</div>
-              <span class="skills__group-name">Security</span>
-            </div>
-            <div class="skills__chips">
-              <span class="skills__chip">Burp Suite</span>
-              <span class="skills__chip">Nmap</span>
-              <span class="skills__chip">Wireshark</span>
-              <span class="skills__chip">Metasploit</span>
-              <span class="skills__chip">OWASP</span>
-              <span class="skills__chip">Nikto</span>
-              <span class="skills__chip">SQLMap</span>
-            </div>
-          </div>
-
-          <!-- Languages -->
-          <div class="skills__group" data-animate="fade-up" data-delay="100">
-            <div class="skills__group-header">
-              <div class="skills__group-icon">⟨/⟩</div>
-              <span class="skills__group-name">Languages</span>
-            </div>
-            <div class="skills__chips">
-              <span class="skills__chip">Python</span>
-              <span class="skills__chip">JavaScript</span>
-              <span class="skills__chip">C++</span>
-              <span class="skills__chip">Bash</span>
-              <span class="skills__chip">SQL</span>
-            </div>
-          </div>
-
-          <!-- Stack & Tools -->
-          <div class="skills__group" data-animate="fade-up" data-delay="200">
-            <div class="skills__group-header">
-              <div class="skills__group-icon">⚙️</div>
-              <span class="skills__group-name">Stack & Tools</span>
-            </div>
-            <div class="skills__chips">
-              <span class="skills__chip">Node.js</span>
-              <span class="skills__chip">MySQL</span>
-              <span class="skills__chip">MongoDB</span>
-              <span class="skills__chip">Git</span>
-              <span class="skills__chip">Docker</span>
-              <span class="skills__chip">VS Code</span>
-            </div>
-          </div>
-
-          <!-- Platforms -->
-          <div class="skills__group" data-animate="fade-up" data-delay="300">
-            <div class="skills__group-header">
-              <div class="skills__group-icon">◈</div>
-              <span class="skills__group-name">Platforms</span>
-            </div>
-            <div class="skills__chips">
-              <span class="skills__chip">Linux</span>
-              <span class="skills__chip">Kali Linux</span>
-              <span class="skills__chip">TryHackMe</span>
-              <span class="skills__chip">PortSwigger Academy</span>
-              <span class="skills__chip">GitHub</span>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- ─── QUOTE: Sun Tzu ─── -->
-    <div class="quote-divider" data-animate="fade-up">
-      <div class="container">
-        <p class="quote-divider__text">Know thy enemy and know yourself; in a hundred battles, you will never be
-          defeated.<span class="quote-divider__author">— Sun Tzu, The Art of War</span></p>
-      </div>
-    </div>
-
-    <!-- ─── PROJECTS ─── -->
-    <section class="section" id="projects">
-      <div class="container">
-        <div class="section__label" data-animate="fade-up">
-          <span class="section__label-line"></span>
-          <span class="section__label-text">Projects & Research</span>
-        </div>
-
-        <div class="projects__grid" id="projects-grid">
-          <!-- SENTINEL-SCAN -->
-          <article class="project-card" data-animate="fade-up">
-            <img class="project-card__image" src="assets/images/sentinel-scan.png"
-              alt="SENTINEL-SCAN — multi-threaded port scanner visualization" loading="lazy">
-            <div class="project-card__body">
-              <span class="project-card__category">Offensive Tooling</span>
-              <h3 class="project-card__name">SENTINEL-SCAN</h3>
-              <p class="project-card__desc">Multi-threaded port scanner with banner grabbing. Designed for rapid network
-                reconnaissance and initial footprinting during engagements.</p>
-              <div class="project-card__tech">
-                <span class="project-card__tech-badge">Python</span>
-                <span class="project-card__tech-badge">Threading</span>
-                <span class="project-card__tech-badge">Socket</span>
-                <span class="project-card__tech-badge">Nmap</span>
-              </div>
-              <a href="https://github.com/Swayam-jhaa/SENTINEL-SCAN" class="project-card__link" target="_blank"
-                rel="noopener noreferrer">
-                View Repository <span class="project-card__link-arrow">→</span>
-              </a>
-            </div>
-          </article>
-
-          <!-- Recon-Lite -->
-          <article class="project-card" data-animate="fade-up" data-delay="100">
-            <img class="project-card__image" src="assets/images/recon-lite.png"
-              alt="Recon-Lite — subdomain enumeration tool visualization" loading="lazy">
-            <div class="project-card__body">
-              <span class="project-card__category">Reconnaissance</span>
-              <h3 class="project-card__name">Recon-Lite</h3>
-              <p class="project-card__desc">Automated subdomain enumeration and recon pipeline. Streamlines discovery by
-                chaining passive and active techniques for faster results.</p>
-              <div class="project-card__tech">
-                <span class="project-card__tech-badge">Python</span>
-                <span class="project-card__tech-badge">DNS</span>
-                <span class="project-card__tech-badge">HTTP</span>
-                <span class="project-card__tech-badge">Threading</span>
-              </div>
-              <a href="https://github.com/Swayam-jhaa/Recon-Lite" class="project-card__link" target="_blank"
-                rel="noopener noreferrer">
-                View Repository <span class="project-card__link-arrow">→</span>
-              </a>
-            </div>
-          </article>
-
-          <!-- DeCognito -->
-          <article class="project-card" data-animate="fade-up" data-delay="200">
-            <img class="project-card__image" src="assets/images/decognito.png"
-              alt="DeCognito — security research tool visualization" loading="lazy">
-            <div class="project-card__body">
-              <span class="project-card__category">Research Tooling</span>
-              <h3 class="project-card__name">DeCognito</h3>
-              <p class="project-card__desc">Security research tooling focused on obfuscation analysis and identity
-                unmasking. Built for deep-dive investigative scenarios.</p>
-              <div class="project-card__tech">
-                <span class="project-card__tech-badge">Python</span>
-                <span class="project-card__tech-badge">Analysis</span>
-                <span class="project-card__tech-badge">Pattern Matching</span>
-              </div>
-              <a href="https://github.com/Swayam-jhaa/DeCognito" class="project-card__link" target="_blank"
-                rel="noopener noreferrer">
-                View Repository <span class="project-card__link-arrow">→</span>
-              </a>
-            </div>
-          </article>
-
-          <!-- Password-Checker -->
-          <article class="project-card" data-animate="fade-up" data-delay="300">
-            <img class="project-card__image" src="assets/images/password-checker.png"
-              alt="Password-Checker — credential security tool visualization" loading="lazy">
-            <div class="project-card__body">
-              <span class="project-card__category">Credential Security</span>
-              <h3 class="project-card__name">Password-Checker</h3>
-              <p class="project-card__desc">Password strength analysis through entropy calculation, common pattern
-                detection, and dictionary-based checks with actionable feedback.</p>
-              <div class="project-card__tech">
-                <span class="project-card__tech-badge">Python</span>
-                <span class="project-card__tech-badge">Regex</span>
-                <span class="project-card__tech-badge">Cryptography</span>
-              </div>
-              <a href="https://github.com/Swayam-jhaa/Password-Checker" class="project-card__link" target="_blank"
-                rel="noopener noreferrer">
-                View Repository <span class="project-card__link-arrow">→</span>
-              </a>
-            </div>
-          </article>
-
-          <!-- CameraCanvas -->
-          <article class="project-card" data-animate="fade-up" data-delay="400">
-            <img class="project-card__image" src="assets/images/camera-canvas.png"
-              alt="CameraCanvas — camera stream utility visualization" loading="lazy">
-            <div class="project-card__body">
-              <span class="project-card__category">Media Processing</span>
-              <h3 class="project-card__name">CameraCanvas</h3>
-              <p class="project-card__desc">Lightweight utility for capturing and manipulating camera streams.
-                Demonstrates proficiency in browser APIs and real-time media handling.</p>
-              <div class="project-card__tech">
-                <span class="project-card__tech-badge">TypeScript</span>
-                <span class="project-card__tech-badge">WebRTC</span>
-                <span class="project-card__tech-badge">Canvas API</span>
-              </div>
-              <a href="https://github.com/Swayam-jhaa/CameraCanvas" class="project-card__link" target="_blank"
-                rel="noopener noreferrer">
-                View Repository <span class="project-card__link-arrow">→</span>
-              </a>
-            </div>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <!-- ─── QUOTE: Machiavelli ─── -->
-    <div class="quote-divider" data-animate="fade-up">
-      <div class="container">
-        <p class="quote-divider__text">The one who adapts his policy to the times prospers, and likewise the one whose
-          policy clashes with the demands of the times does not.<span class="quote-divider__author">— Niccolò
-            Machiavelli, The Prince</span></p>
-      </div>
-    </div>
-
-    <!-- ─── CONNECT ─── -->
-    <section class="section connect" id="connect">
-      <div class="container">
-        <div class="section__label" style="justify-content: center;" data-animate="fade-up">
-          <span class="section__label-line"></span>
-          <span class="section__label-text">Connect</span>
-          <span class="section__label-line"></span>
-        </div>
-
-        <h2 class="connect__headline" data-animate="fade-up">Let's Connect</h2>
-
-        <p class="connect__subline" data-animate="fade-up" data-delay="100">
-          Interested in security research, collaboration, or just want to talk about breaking things responsibly? I'm
-          always open to a conversation.
+        <p class="hero__subline-straight">
+          Engineering high-throughput APIs, asynchronous worker architectures, and production retrieval pipelines — built from the inside out with offensive security discipline.
         </p>
 
-        <div class="connect__cta" data-animate="fade-up" data-delay="200">
-          <a href="mailto:swayamjhaofficial@gmail.com" class="btn btn--primary" id="cta-email">
-            Get In Touch
-            <svg class="btn__icon" viewBox="0 0 24 24" aria-hidden="true">
-              <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"
-                stroke="currentColor" stroke-width="2" stroke-linecap="round" fill="none" />
-              <polyline points="22,6 12,13 2,6" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                stroke-linejoin="round" fill="none" />
+        <div class="hero__actions-straight">
+          <a href="#systems" class="btn btn--primary">
+            Explore Systems
+            <svg class="btn__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M7 17L17 7M17 7H7M17 7V17"/>
+            </svg>
+          </a>
+          <a href="https://github.com/Swayam-jhaa" target="_blank" rel="noopener noreferrer" class="btn btn--secondary">
+            View GitHub Profile
+          </a>
+          <a href="#architecture" class="btn btn--outline-cyan">
+            Interactive Architecture Flow ↓
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- =======================================================================
+         SECTION 2: FEATURED SYSTEMS (Works)
+         ======================================================================= -->
+    <section class="section section--alt" id="systems">
+      <div class="container">
+        <div class="section__header">
+          <div class="section__eyebrow">
+            <span class="section__eyebrow-dot"></span>
+            <span>01 // PRODUCTION BUILDS</span>
+          </div>
+          <h2 class="section__title">FEATURED SYSTEMS</h2>
+          <p class="section__desc">
+            Production-grade distributed pipelines, asynchronous reconnaissance workers, and autonomous multi-agent engines built for real-world reliability.
+          </p>
+        </div>
+
+        <!-- Rendered Dynamically by JS -->
+        <div class="systems-grid" id="systems-container"></div>
+      </div>
+    </section>
+
+    <!-- =======================================================================
+         SECTION 3: INTERACTIVE SVG ARCHITECTURE PIPELINE
+         ======================================================================= -->
+    <section class="section arch-section" id="architecture">
+      <div class="container">
+        <div class="section__header">
+          <div class="section__eyebrow">
+            <span class="section__eyebrow-dot"></span>
+            <span>02 // INTERACTIVE PIPELINE</span>
+          </div>
+          <h2 class="section__title">DISTRIBUTED ARCHITECTURE FLOW</h2>
+          <p class="section__desc">
+            Scroll-driven interactive SVG architecture visualizing how client requests route across non-blocking async workers, event queues, vector retrieval indices, and resilient persistence.
+          </p>
+        </div>
+
+        <div class="arch-canvas-container">
+          <svg class="arch-svg" viewBox="0 0 1000 420" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <defs>
+              <linearGradient id="path-grad-1" x1="0%" y1="0%" x2="100%" y2="0%">
+                <stop offset="0%" stop-color="#ff1e27" stop-opacity="0.9"/>
+                <stop offset="100%" stop-color="#00f0ff" stop-opacity="0.9"/>
+              </linearGradient>
+
+              <linearGradient id="path-grad-vertical" x1="0%" y1="0%" x2="0%" y2="100%">
+                <stop offset="0%" stop-color="#00f0ff" stop-opacity="0.9"/>
+                <stop offset="100%" stop-color="#ff1e27" stop-opacity="0.9"/>
+              </linearGradient>
+
+              <filter id="node-glow" x="-20%" y="-20%" width="140%" height="140%">
+                <feDropShadow dx="0" dy="6" stdDeviation="10" flood-color="#000000" flood-opacity="0.9"/>
+              </filter>
+            </defs>
+
+            <!-- MATHEMATICALLY ALIGNED CONNECTING PIPELINES -->
+            
+            <!-- 1. Clients (190, 95) -> FastAPI (280, 95) -->
+            <path d="M 190 95 L 280 95" stroke="url(#path-grad-1)" stroke-width="2.5" class="svg-flow-path"/>
+            <!-- 2. FastAPI (450, 95) -> Redis Queue (540, 95) -->
+            <path d="M 450 95 L 540 95" stroke="url(#path-grad-1)" stroke-width="2.5" class="svg-flow-path"/>
+            <!-- 3. Redis Queue (710, 95) -> Edge Delivery (800, 95) -->
+            <path d="M 710 95 L 800 95" stroke="url(#path-grad-1)" stroke-width="2.5" class="svg-flow-path"/>
+            <!-- 4. Queue (625, 140) -> AI Engine (625, 250) Vertical Bus -->
+            <path d="M 625 140 L 625 250" stroke="url(#path-grad-vertical)" stroke-width="2.5" class="svg-flow-path"/>
+            <!-- 5. AI Engine (540, 295) -> PostgreSQL (450, 295) -->
+            <path d="M 540 295 L 450 295" stroke="url(#path-grad-1)" stroke-width="2.5" class="svg-flow-path"/>
+            <!-- 6. Edge Delivery (880, 140) -> Observability (880, 250) -->
+            <path d="M 880 140 L 880 250" stroke="url(#path-grad-vertical)" stroke-width="2.5" class="svg-flow-path"/>
+            <!-- 7. AI Engine (710, 295) -> Observability (800, 295) -->
+            <path d="M 710 295 L 800 295" stroke="url(#path-grad-1)" stroke-width="2.5" class="svg-flow-path"/>
+
+            <!-- Port Connector Dots -->
+            <circle cx="190" cy="95" r="4" fill="#ff1e27"/>
+            <circle cx="280" cy="95" r="4" fill="#00f0ff"/>
+            <circle cx="450" cy="95" r="4" fill="#ff1e27"/>
+            <circle cx="540" cy="95" r="4" fill="#00f0ff"/>
+            <circle cx="710" cy="95" r="4" fill="#ff1e27"/>
+            <circle cx="800" cy="95" r="4" fill="#00f0ff"/>
+            <circle cx="625" cy="140" r="4" fill="#ffd23f"/>
+            <circle cx="625" cy="250" r="4" fill="#ffd23f"/>
+            <circle cx="540" cy="295" r="4" fill="#00f0ff"/>
+            <circle cx="450" cy="295" r="4" fill="#ff1e27"/>
+            <circle cx="880" cy="140" r="4" fill="#00f0ff"/>
+            <circle cx="880" cy="250" r="4" fill="#00f0ff"/>
+            <circle cx="710" cy="295" r="4" fill="#ff1e27"/>
+            <circle cx="800" cy="295" r="4" fill="#ffd23f"/>
+
+            <!-- Animated Flow Pulse Particles -->
+            <circle cx="235" cy="95" r="3.5" fill="#00f0ff" class="svg-pulse-particle">
+              <animate attributeName="opacity" values="0.2;1;0.2" dur="1.8s" repeatCount="indefinite"/>
+            </circle>
+            <circle cx="495" cy="95" r="3.5" fill="#ff1e27" class="svg-pulse-particle">
+              <animate attributeName="opacity" values="0.2;1;0.2" dur="2.1s" repeatCount="indefinite"/>
+            </circle>
+            <circle cx="625" cy="195" r="3.5" fill="#ffd23f" class="svg-pulse-particle">
+              <animate attributeName="opacity" values="0.2;1;0.2" dur="1.6s" repeatCount="indefinite"/>
+            </circle>
+            <circle cx="495" cy="295" r="3.5" fill="#00f0ff" class="svg-pulse-particle">
+              <animate attributeName="opacity" values="0.2;1;0.2" dur="2.4s" repeatCount="indefinite"/>
+            </circle>
+            <circle cx="880" cy="195" r="3.5" fill="#00f0ff" class="svg-pulse-particle">
+              <animate attributeName="opacity" values="0.2;1;0.2" dur="2.0s" repeatCount="indefinite"/>
+            </circle>
+
+            <!-- ARCHITECTURE NODES -->
+            
+            <!-- NODE 1: External Request Ingestion -->
+            <g class="arch-node-group" transform="translate(40, 50)">
+              <rect class="node-box" width="150" height="90" rx="3" fill="#0c0f18" stroke="#252d42" stroke-width="1.5" filter="url(#node-glow)"/>
+              <text x="14" y="28" fill="#8c95a8" font-family="JetBrains Mono" font-size="10" font-weight="600">INPUT INGESTION</text>
+              <text class="node-title" x="14" y="54" fill="#f4f5f9" font-family="Syne" font-size="15" font-weight="700">Clients &amp; APIs</text>
+              <text x="14" y="74" fill="#00f0ff" font-family="JetBrains Mono" font-size="11">HTTPS · Sockets</text>
+            </g>
+
+            <!-- NODE 2: FastAPI Ingestion & Rate Throttling -->
+            <g class="arch-node-group" transform="translate(280, 50)">
+              <rect class="node-box" width="170" height="90" rx="3" fill="#0c0f18" stroke="#ff1e27" stroke-width="1.5" filter="url(#node-glow)"/>
+              <text x="14" y="28" fill="#ff1e27" font-family="JetBrains Mono" font-size="10" font-weight="600">INGESTION TIER</text>
+              <text class="node-title" x="14" y="54" fill="#f4f5f9" font-family="Syne" font-size="15" font-weight="700">FastAPI AsyncIO</text>
+              <text x="14" y="74" fill="#8c95a8" font-family="JetBrains Mono" font-size="11">Non-Blocking I/O</text>
+            </g>
+
+            <!-- NODE 3: Redis Streams & Celery Queue Pool -->
+            <g class="arch-node-group" transform="translate(540, 50)">
+              <rect class="node-box" width="170" height="90" rx="3" fill="#0c0f18" stroke="#252d42" stroke-width="1.5" filter="url(#node-glow)"/>
+              <text x="14" y="28" fill="#ffd23f" font-family="JetBrains Mono" font-size="10" font-weight="600">BUFFER &amp; QUEUE</text>
+              <text class="node-title" x="14" y="54" fill="#f4f5f9" font-family="Syne" font-size="15" font-weight="700">Redis &amp; Celery</text>
+              <text x="14" y="74" fill="#8c95a8" font-family="JetBrains Mono" font-size="11">Producer-Consumer</text>
+            </g>
+
+            <!-- NODE 4: Edge Delivery & Telemetry -->
+            <g class="arch-node-group" transform="translate(800, 50)">
+              <rect class="node-box" width="160" height="90" rx="3" fill="#0c0f18" stroke="#252d42" stroke-width="1.5" filter="url(#node-glow)"/>
+              <text x="14" y="28" fill="#00f0ff" font-family="JetBrains Mono" font-size="10" font-weight="600">DELIVERY TIER</text>
+              <text class="node-title" x="14" y="54" fill="#f4f5f9" font-family="Syne" font-size="15" font-weight="700">Edge Proxy</text>
+              <text x="14" y="74" fill="#8c95a8" font-family="JetBrains Mono" font-size="11">Vercel &amp; Next.js</text>
+            </g>
+
+            <!-- NODE 5: PostgreSQL Persistent Store -->
+            <g class="arch-node-group" transform="translate(280, 250)">
+              <rect class="node-box" width="170" height="90" rx="3" fill="#0c0f18" stroke="#252d42" stroke-width="1.5" filter="url(#node-glow)"/>
+              <text x="14" y="28" fill="#8c95a8" font-family="JetBrains Mono" font-size="10" font-weight="600">PERSISTENCE</text>
+              <text class="node-title" x="14" y="54" fill="#f4f5f9" font-family="Syne" font-size="15" font-weight="700">PostgreSQL DB</text>
+              <text x="14" y="74" fill="#8c95a8" font-family="JetBrains Mono" font-size="11">ACID &amp; SQLAlchemy</text>
+            </g>
+
+            <!-- NODE 6: AI Engine & RAG Retrieval -->
+            <g class="arch-node-group" transform="translate(540, 250)">
+              <rect class="node-box" width="170" height="90" rx="3" fill="#0c0f18" stroke="#ff1e27" stroke-width="1.5" filter="url(#node-glow)"/>
+              <text x="14" y="28" fill="#ff1e27" font-family="JetBrains Mono" font-size="10" font-weight="600">AI &amp; RETRIEVAL</text>
+              <text class="node-title" x="14" y="54" fill="#f4f5f9" font-family="Syne" font-size="15" font-weight="700">RAG &amp; Multi-Agent</text>
+              <text x="14" y="74" fill="#00f0ff" font-family="JetBrains Mono" font-size="11">Vector Index &amp; Rerank</text>
+            </g>
+
+            <!-- NODE 7: Observability & Automated Audits -->
+            <g class="arch-node-group" transform="translate(800, 250)">
+              <rect class="node-box" width="160" height="90" rx="3" fill="#0c0f18" stroke="#252d42" stroke-width="1.5" filter="url(#node-glow)"/>
+              <text x="14" y="28" fill="#ffd23f" font-family="JetBrains Mono" font-size="10" font-weight="600">OBSERVABILITY</text>
+              <text class="node-title" x="14" y="54" fill="#f4f5f9" font-family="Syne" font-size="15" font-weight="700">Audit &amp; Telemetry</text>
+              <text x="14" y="74" fill="#8c95a8" font-family="JetBrains Mono" font-size="11">Metrics &amp; CI/CD</text>
+            </g>
+          </svg>
+
+          <!-- Telemetry Specs Strip -->
+          <div class="arch-telemetry-strip">
+            <div class="arch-telemetry-item">
+              <span class="arch-telemetry-label">Ingestion Concurrency</span>
+              <span class="arch-telemetry-val">FastAPI AsyncIO Loop</span>
+            </div>
+            <div class="arch-telemetry-item">
+              <span class="arch-telemetry-label">Task Queue Routing</span>
+              <span class="arch-telemetry-val">Redis Streams &amp; Celery</span>
+            </div>
+            <div class="arch-telemetry-item">
+              <span class="arch-telemetry-label">Retrieval Strategy</span>
+              <span class="arch-telemetry-val">Hybrid Vector + Reranking</span>
+            </div>
+            <div class="arch-telemetry-item">
+              <span class="arch-telemetry-label">Failure Recovery</span>
+              <span class="arch-telemetry-val">Exponential Backoff &amp; DLQ</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- =======================================================================
+         SECTION 4: TECHNICAL ARSENAL (Stack)
+         ======================================================================= -->
+    <section class="section" id="stack">
+      <div class="container">
+        <div class="section__header">
+          <div class="section__eyebrow">
+            <span class="section__eyebrow-dot"></span>
+            <span>03 // TECHNICAL ARSENAL</span>
+          </div>
+          <h2 class="section__title">CORE COMPETENCIES</h2>
+          <p class="section__desc">
+            Tools, protocols, and architectural patterns deployed across high-concurrency backends and production AI systems.
+          </p>
+        </div>
+
+        <!-- Rendered Dynamically by JS -->
+        <div class="stack-grid" id="stack-container"></div>
+      </div>
+    </section>
+
+    <!-- =======================================================================
+         SECTION 5: SIH HACKATHON & EXPERIENCE SPOTLIGHT
+         ======================================================================= -->
+    <section class="section section--alt" id="research">
+      <div class="container">
+        <div class="section__header">
+          <div class="section__eyebrow">
+            <span class="section__eyebrow-dot"></span>
+            <span>04 // CASE STUDY &amp; HACKATHONS</span>
+          </div>
+          <h2 class="section__title">PREDICTA &amp; SIH 2026</h2>
+          <p class="section__desc">
+            Engineering for mission-critical hardware environments where failures carry physical consequences.
+          </p>
+        </div>
+
+        <div class="sih-spotlight" data-reveal>
+          <div style="display:flex; justify-content:space-between; align-items:flex-start; flex-wrap:wrap; gap:1rem;">
+            <div>
+              <span class="system-card__badge system-card__badge--gold">SIH 2026 Finalist · Problem Statement PS170</span>
+              <h3 style="font-family:var(--font-heading); font-size:1.875rem; font-weight:800; color:#fff; margin-top:0.75rem;">
+                Aerospace Hardware Anomaly Screening &amp; Parametric Drift
+              </h3>
+            </div>
+            <a href="https://github.com/Swayam-jhaa/Predicta" target="_blank" rel="noopener noreferrer" class="btn btn--secondary btn--sm">
+              View Case Repository →
+            </a>
+          </div>
+
+          <p style="color:var(--text-secondary); margin-top:1.25rem; font-size:1rem; line-height:1.7; max-width:860px;">
+            In aerospace avionics and high-reliability systems, electronic components undergo intense burn-in stress tests before deployment. The challenge for Smart India Hackathon 2026 was creating an AI pipeline capable of detecting subtle parametric degradation curves long before catastrophic voltage breakdown occurred.
+          </p>
+          <p style="color:var(--text-muted); margin-top:0.75rem; font-size:0.9375rem; line-height:1.7; max-width:860px;">
+            We architected a high-precision time-series evaluation backend using <strong>FastAPI, NumPy, and SciPy</strong> to compute anomaly scores in real time, delivering actionable drift forecasting to test operators via an interactive Next.js telemetry console.
+          </p>
+
+          <div class="sih-metric-strip">
+            <div class="sih-metric">
+              <span class="sih-metric__val">PS170</span>
+              <span class="sih-metric__label">Problem Statement</span>
+            </div>
+            <div class="sih-metric">
+              <span class="sih-metric__val">&lt;12ms</span>
+              <span class="sih-metric__label">Inference Latency</span>
+            </div>
+            <div class="sih-metric">
+              <span class="sih-metric__val">100%</span>
+              <span class="sih-metric__label">Drift Capture Rate</span>
+            </div>
+            <div class="sih-metric">
+              <span class="sih-metric__val">Finalist</span>
+              <span class="sih-metric__label">National Selection</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- =======================================================================
+         SECTION 6: CONTACT & DIRECT CHANNELS
+         ======================================================================= -->
+    <section class="section" id="contact">
+      <div class="container contact-wrapper">
+        <div class="section__eyebrow" style="justify-content:center;">
+          <span class="section__eyebrow-dot"></span>
+          <span>05 // INITIATE DIALOGUE</span>
+        </div>
+        <h2 class="section__title" style="font-size:clamp(2.75rem, 6vw, 5rem);">LET'S BUILD SOMETHING RESILIENT</h2>
+        <p class="section__desc" style="margin-left:auto; margin-right:auto; margin-top:1rem;">
+          Currently open to high-impact roles in Backend Systems, Distributed Architecture, and Production AI Engineering.
+        </p>
+
+        <div style="margin-top:2.5rem;">
+          <a href="mailto:swayamjhaofficial@gmail.com" class="btn btn--primary" style="padding:1.125rem 2.5rem; font-size:1rem;">
+            swayamjhaofficial@gmail.com
+            <svg class="btn__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
+              <polyline points="22,6 12,13 2,6"/>
             </svg>
           </a>
         </div>
 
-        <div class="connect__socials" data-animate="fade-up" data-delay="300">
-          <!-- GitHub -->
-          <a href="https://github.com/Swayam-jhaa" class="connect__social-link" target="_blank"
-            rel="noopener noreferrer" aria-label="GitHub profile">
-            <svg viewBox="0 0 24 24" aria-hidden="true">
-              <path
-                d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z" />
-            </svg>
+        <div class="social-links">
+          <a href="https://github.com/Swayam-jhaa" target="_blank" rel="noopener noreferrer" class="social-link">
+            GitHub
           </a>
-          <!-- LinkedIn -->
-          <a href="https://www.linkedin.com/in/swayam-jha-520ba9312/" class="connect__social-link" target="_blank"
-            rel="noopener noreferrer" aria-label="LinkedIn profile">
-            <svg viewBox="0 0 24 24" aria-hidden="true">
-              <path
-                d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z" />
-            </svg>
+          <a href="https://www.linkedin.com/in/swayam-jha-520ba9312/" target="_blank" rel="noopener noreferrer" class="social-link">
+            LinkedIn
           </a>
-          <!-- Email -->
-          <a href="mailto:swayamjhaofficial@gmail.com" class="connect__social-link" aria-label="Send email">
-            <svg viewBox="0 0 24 24" aria-hidden="true">
-              <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" fill="none"
-                stroke="currentColor" stroke-width="2" />
-              <polyline points="22,6 12,13 2,6" fill="none" stroke="currentColor" stroke-width="2" />
-            </svg>
+          <a href="https://techpulse-intel.vercel.app" target="_blank" rel="noopener noreferrer" class="social-link">
+            TechPulse Live ↗
           </a>
         </div>
-
-        <p class="connect__closing" data-animate="fade-up" data-delay="400">Always open to discussing security, tooling,
-          and new ideas.</p>
       </div>
     </section>
 
   </main>
 
-  <!-- ═══════════════════════════════════════
+  <!-- =========================================================================
        FOOTER
-       ═══════════════════════════════════════ -->
-  <footer class="footer" role="contentinfo">
+       ========================================================================= -->
+  <footer class="footer">
     <div class="container footer__inner">
-      <span class="footer__copy">© 2026 Swayam Jha</span>
-      <span class="footer__tagline">Built with precision.</span>
+      <span>&copy; 2026 Swayam Jha · Backend &amp; AI Systems Engineer</span>
+      <span style="color:var(--accent-crimson);">ENGINEERED BEYOND THE HAPPY PATH</span>
     </div>
   </footer>
 
   <!-- Scripts -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r134/three.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/vanta@latest/dist/vanta.globe.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/animejs@3.2.2/lib/anime.min.js"></script>
   <script src="js/data.js"></script>
   <script src="js/app.js"></script>
   <script src="js/animations.js"></script>
 </body>
-
 </html>

@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" fill="none">
+  <rect width="64" height="64" rx="6" fill="#060709"/>
+  <rect x="2" y="2" width="60" height="60" rx="4" stroke="#ff1e27" stroke-width="3"/>
+  <rect x="52" y="4" width="8" height="8" fill="#ff1e27"/>
+  <text x="32" y="44" fill="#ffffff" font-family="'Anton', sans-serif" font-size="34" font-weight="900" text-anchor="middle" letter-spacing="-1">SJ</text>
+</svg>

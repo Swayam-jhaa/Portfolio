@@ -1,419 +1,175 @@
-/* ============================================
-   ANIMATIONS — Anime.js Motion System
-   Premium, disciplined, Awwwards-tier
-   ============================================ */
+/* ==========================================================================
+   ANIMATIONS & INTERACTIONS — Executive Portfolio
+   ========================================================================== */
 
-(function() {
-  'use strict';
+document.addEventListener('DOMContentLoaded', () => {
+  initNavbarScroll();
+  initHeroParallax();
+  initWordCycler();
+  initCursorGlow();
+  initScrollReveals();
+  initSvgArchitectureFlow();
+});
 
-  const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+/* 1. Navbar Scroll Effect */
+function initNavbarScroll() {
+  const navbar = document.getElementById('navbar');
+  if (!navbar) return;
 
-  // ── Shared Easing ──
-  const EASING = {
-    reveal: 'easeOutExpo',
-    smooth: 'easeInOutQuad',
-    bounce: 'easeOutBack',
-    sharp: 'easeOutCubic',
+  const handleScroll = () => {
+    if (window.scrollY > 40) {
+      navbar.classList.add('navbar--scrolled');
+    } else {
+      navbar.classList.remove('navbar--scrolled');
+    }
   };
 
-  const DURATION = {
-    fast: 300,
-    base: 500,
-    reveal: 800,
-    slow: 1200,
-    hero: 1000,
+  window.addEventListener('scroll', handleScroll, { passive: true });
+  handleScroll();
+}
+
+/* 2. Hero 3D Perspective & Mouse Parallax */
+function initHeroParallax() {
+  const heroStage = document.getElementById('hero-stage');
+  const portrait = document.getElementById('hero-portrait');
+  const behindText = document.getElementById('hero-behind-text');
+  const ambientLight = document.getElementById('hero-ambient-light');
+
+  if (!heroStage || !portrait || !behindText) return;
+
+  // Reduced motion check
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
+  let targetX = 0, targetY = 0;
+  let currentX = 0, currentY = 0;
+  let isHovering = false;
+
+  const onMouseMove = (e) => {
+    const rect = heroStage.getBoundingClientRect();
+    const x = ((e.clientX - rect.left) / rect.width - 0.5) * 2;
+    const y = ((e.clientY - rect.top) / rect.height - 0.5) * 2;
+    targetX = Math.max(-1, Math.min(1, x));
+    targetY = Math.max(-1, Math.min(1, y));
   };
 
-  // ═══════════════════════════════════════
-  //  HERO ENTRANCE SEQUENCE
-  // ═══════════════════════════════════════
-  function animateHero() {
-    if (prefersReducedMotion) {
-      // Just show everything immediately
-      document.querySelectorAll('.hero__name-char').forEach(c => {
-        c.style.opacity = '1';
-        c.style.transform = 'translateY(0)';
-      });
-      document.getElementById('hero-role').style.opacity = '1';
-      document.getElementById('hero-tagline').style.opacity = '1';
-      document.getElementById('hero-ctas').style.opacity = '1';
-      document.getElementById('hero-stats').style.opacity = '1';
-      animateCounters();
-      return;
+  heroStage.addEventListener('mouseenter', () => { isHovering = true; });
+  heroStage.addEventListener('mousemove', onMouseMove);
+  heroStage.addEventListener('mouseleave', () => {
+    isHovering = false;
+    targetX = 0;
+    targetY = 0;
+  });
+
+  // RAF loop for buttery smooth dampening
+  const render = () => {
+    currentX += (targetX - currentX) * 0.08;
+    currentY += (targetY - currentY) * 0.08;
+
+    // Portrait 3D tilt
+    portrait.style.transform = `perspective(1000px) rotateY(${currentX * 6}deg) rotateX(${-currentY * 6}deg) translateZ(25px)`;
+
+    // Counter-shift behind text for depth
+    behindText.style.transform = `translate(${currentX * -18}px, ${currentY * -18}px)`;
+
+    // Shift ambient halo
+    if (ambientLight) {
+      ambientLight.style.transform = `translate(calc(-50% + ${currentX * 25}px), calc(-50% + ${currentY * 25}px))`;
     }
 
-    const timeline = anime.timeline({
-      easing: EASING.reveal,
-    });
+    requestAnimationFrame(render);
+  };
 
-    // 1. Name character stagger
-    timeline.add({
-      targets: '.hero__name-char',
-      translateY: [60, 0],
-      opacity: [0, 1],
-      duration: DURATION.hero,
-      delay: anime.stagger(60, { start: 300 }),
-    });
+  render();
+}
 
-    // 2. Role line
-    timeline.add({
-      targets: '#hero-role',
-      translateY: [20, 0],
-      opacity: [0, 1],
-      duration: DURATION.reveal,
-    }, '-=400');
+/* 3. Behind-Text Word Cycler */
+function initWordCycler() {
+  const behindWord = document.getElementById('hero-behind-word');
+  if (!behindWord) return;
 
-    // 3. Tagline
-    timeline.add({
-      targets: '#hero-tagline',
-      translateY: [20, 0],
-      opacity: [0, 1],
-      duration: DURATION.reveal,
-    }, '-=500');
+  const words = PORTFOLIO_DATA.heroWords || ['SWAYAM', 'SYSTEMS', 'BACKEND', 'AI PIPELINES'];
+  let index = 0;
 
-    // 4. CTAs
-    timeline.add({
-      targets: '#hero-ctas',
-      translateY: [20, 0],
-      opacity: [0, 1],
-      duration: DURATION.base,
-    }, '-=400');
+  behindWord.parentElement.addEventListener('click', () => {
+    index = (index + 1) % words.length;
+    behindWord.style.opacity = '0';
+    behindWord.style.transform = 'scale(0.95)';
+    
+    setTimeout(() => {
+      behindWord.textContent = words[index];
+      behindWord.style.opacity = '0.95';
+      behindWord.style.transform = 'scale(1)';
+    }, 150);
+  });
+}
 
-    // 5. Stats
-    timeline.add({
-      targets: '#hero-stats',
-      translateY: [20, 0],
-      opacity: [0, 1],
-      duration: DURATION.base,
-      complete: function() {
-        animateCounters();
+/* 4. Ambient Cursor Glow */
+function initCursorGlow() {
+  const glow = document.getElementById('cursor-glow');
+  if (!glow) return;
+
+  if (window.matchMedia('(pointer: coarse)').matches) {
+    glow.style.display = 'none';
+    return;
+  }
+
+  let mouseX = window.innerWidth / 2;
+  let mouseY = window.innerHeight / 2;
+  let glowX = mouseX;
+  let glowY = mouseY;
+
+  window.addEventListener('mousemove', (e) => {
+    mouseX = e.clientX;
+    mouseY = e.clientY;
+  });
+
+  const updateGlow = () => {
+    glowX += (mouseX - glowX) * 0.12;
+    glowY += (mouseY - glowY) * 0.12;
+    glow.style.left = `${glowX}px`;
+    glow.style.top = `${glowY}px`;
+    requestAnimationFrame(updateGlow);
+  };
+
+  updateGlow();
+}
+
+/* 5. Scroll Reveals with IntersectionObserver */
+function initScrollReveals() {
+  const elements = document.querySelectorAll('[data-reveal]');
+  if (!elements.length) return;
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('revealed');
+        observer.unobserve(entry.target);
       }
-    }, '-=300');
+    });
+  }, { threshold: 0.12 });
 
-    // 6. Hero label
-    timeline.add({
-      targets: '.hero__label',
-      translateX: [-20, 0],
-      opacity: [0, 1],
-      duration: DURATION.base,
-    }, 200);
-  }
+  elements.forEach((el) => observer.observe(el));
+}
 
-  // ═══════════════════════════════════════
-  //  STAT COUNTER ANIMATION
-  // ═══════════════════════════════════════
-  function animateCounters() {
-    const counters = document.querySelectorAll('[data-count]');
+/* 6. Interactive SVG Architecture Flow Animation */
+function initSvgArchitectureFlow() {
+  const archSection = document.getElementById('architecture');
+  const flowPaths = document.querySelectorAll('.svg-flow-path');
+  const pulseParticles = document.querySelectorAll('.svg-pulse-particle');
 
-    counters.forEach(counter => {
-      const target = parseInt(counter.dataset.count, 10);
-      if (isNaN(target)) return;
+  if (!archSection) return;
 
-      if (prefersReducedMotion) {
-        counter.textContent = target + '+';
-        return;
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        flowPaths.forEach(p => p.style.animationPlayState = 'running');
+        pulseParticles.forEach(p => p.style.animationPlayState = 'running');
+      } else {
+        flowPaths.forEach(p => p.style.animationPlayState = 'paused');
+        pulseParticles.forEach(p => p.style.animationPlayState = 'paused');
       }
-
-      anime({
-        targets: { value: 0 },
-        value: target,
-        duration: DURATION.slow,
-        easing: EASING.sharp,
-        round: 1,
-        update: function(anim) {
-          counter.textContent = Math.round(anim.animations[0].currentValue);
-        },
-        complete: function() {
-          counter.textContent = target + '+';
-        }
-      });
     });
-  }
+  }, { threshold: 0.2 });
 
-  // ═══════════════════════════════════════
-  //  SCROLL-TRIGGERED REVEALS
-  // ═══════════════════════════════════════
-  function setupScrollReveals() {
-    if (prefersReducedMotion) {
-      // Show everything immediately
-      document.querySelectorAll('[data-animate]').forEach(el => {
-        el.style.opacity = '1';
-        el.style.transform = 'none';
-      });
-      return;
-    }
-
-    document.querySelectorAll('[data-animate]').forEach(el => {
-      el.addEventListener('animate-in', function() {
-        const type = el.dataset.animate || 'fade-up';
-
-        switch(type) {
-          case 'fade-up':
-            anime({
-              targets: el,
-              translateY: [30, 0],
-              opacity: [0, 1],
-              duration: DURATION.reveal,
-              easing: EASING.reveal,
-            });
-            break;
-
-          case 'fade-left':
-            anime({
-              targets: el,
-              translateX: [-30, 0],
-              opacity: [0, 1],
-              duration: DURATION.reveal,
-              easing: EASING.reveal,
-            });
-            break;
-
-          case 'scale-up':
-            anime({
-              targets: el,
-              scale: [0.95, 1],
-              opacity: [0, 1],
-              duration: DURATION.reveal,
-              easing: EASING.reveal,
-            });
-            break;
-        }
-
-        // Stagger children if they exist (for skill chips, cards, etc.)
-        const chips = el.querySelectorAll('.skills__chip');
-        if (chips.length > 0) {
-          anime({
-            targets: chips,
-            translateY: [12, 0],
-            opacity: [0, 1],
-            duration: DURATION.base,
-            delay: anime.stagger(40),
-            easing: EASING.sharp,
-          });
-        }
-
-        const focusItems = el.querySelectorAll('.about__focus-item');
-        if (focusItems.length > 0) {
-          anime({
-            targets: focusItems,
-            translateX: [-16, 0],
-            opacity: [0, 1],
-            duration: DURATION.base,
-            delay: anime.stagger(80),
-            easing: EASING.sharp,
-          });
-        }
-      });
-    });
-  }
-
-  // ═══════════════════════════════════════
-  //  CARD HOVER INTERACTIONS
-  // ═══════════════════════════════════════
-  function setupCardInteractions() {
-    if (prefersReducedMotion) return;
-
-    const cards = document.querySelectorAll('.project-card');
-
-    cards.forEach(card => {
-      card.addEventListener('mouseenter', () => {
-        anime({
-          targets: card,
-          translateY: -4,
-          duration: DURATION.fast,
-          easing: EASING.smooth,
-        });
-      });
-
-      card.addEventListener('mouseleave', () => {
-        anime({
-          targets: card,
-          translateY: 0,
-          duration: DURATION.fast,
-          easing: EASING.smooth,
-        });
-      });
-    });
-  }
-
-  // ═══════════════════════════════════════
-  //  BUTTON HOVER GLOW
-  // ═══════════════════════════════════════
-  function setupButtonInteractions() {
-    if (prefersReducedMotion) return;
-
-    const primaryBtns = document.querySelectorAll('.btn--primary');
-
-    primaryBtns.forEach(btn => {
-      btn.addEventListener('mouseenter', () => {
-        anime({
-          targets: btn,
-          scale: 1.03,
-          duration: DURATION.fast,
-          easing: EASING.smooth,
-        });
-      });
-
-      btn.addEventListener('mouseleave', () => {
-        anime({
-          targets: btn,
-          scale: 1,
-          duration: DURATION.fast,
-          easing: EASING.smooth,
-        });
-      });
-    });
-  }
-
-  // ═══════════════════════════════════════
-  //  SECTION LABEL LINE SWEEP
-  // ═══════════════════════════════════════
-  function setupLabelAnimations() {
-    if (prefersReducedMotion) return;
-
-    document.querySelectorAll('.section__label').forEach(label => {
-      label.addEventListener('animate-in', () => {
-        const line = label.querySelector('.section__label-line');
-        const text = label.querySelector('.section__label-text');
-
-        if (line) {
-          anime({
-            targets: line,
-            width: [0, 40],
-            opacity: [0, 1],
-            duration: DURATION.base,
-            easing: EASING.sharp,
-          });
-        }
-
-        if (text) {
-          anime({
-            targets: text,
-            translateX: [-10, 0],
-            opacity: [0, 1],
-            duration: DURATION.base,
-            delay: 150,
-            easing: EASING.sharp,
-          });
-        }
-      });
-    });
-  }
-
-  // ═══════════════════════════════════════
-  //  SOCIAL ICONS STAGGER
-  // ═══════════════════════════════════════
-  function setupSocialAnimations() {
-    if (prefersReducedMotion) return;
-
-    const socials = document.querySelector('.connect__socials');
-    if (!socials) return;
-
-    socials.addEventListener('animate-in', () => {
-      anime({
-        targets: socials.querySelectorAll('.connect__social-link'),
-        scale: [0.8, 1],
-        opacity: [0, 1],
-        duration: DURATION.base,
-        delay: anime.stagger(80),
-        easing: EASING.bounce,
-      });
-    });
-  }
-
-  // ═══════════════════════════════════════
-  //  NAVBAR ACTIVE DOT TRANSITION
-  // ═══════════════════════════════════════
-  function setupNavDotAnimation() {
-    if (prefersReducedMotion) return;
-
-    // The active dot is CSS pseudo-element, so we animate opacity via class transitions
-    // This is handled by CSS transitions already
-  }
-
-  // ═══════════════════════════════════════
-  //  VANTA.JS GLOBE BACKGROUND
-  // ═══════════════════════════════════════
-  function setupVantaGlobe() {
-    if (prefersReducedMotion) return;
-    if (typeof VANTA === 'undefined' || !VANTA.GLOBE) return;
-
-    try {
-      VANTA.GLOBE({
-        el: '#vanta-bg',
-        mouseControls: true,
-        touchControls: true,
-        gyroControls: false,
-        minHeight: 200.00,
-        minWidth: 200.00,
-        scale: 1.00,
-        scaleMobile: 1.00,
-        color: 0x556B2F,      // Olive drab — matches brand
-        color2: 0x1a2b0a,     // Deep green for secondary lines
-        backgroundColor: 0x050505, // Match canvas
-        size: 1.2,
-        points: 8.00,
-        maxDistance: 22.00,
-        spacing: 18.00,
-      });
-    } catch(e) {
-      // Vanta failed to load — no action needed, hero still works
-      console.warn('Vanta.js Globe could not initialize:', e.message);
-    }
-  }
-
-  // ═══════════════════════════════════════
-  //  SKILLS GROUP HOVER
-  // ═══════════════════════════════════════
-  function setupSkillGroupInteractions() {
-    if (prefersReducedMotion) return;
-
-    document.querySelectorAll('.skills__group').forEach(group => {
-      group.addEventListener('mouseenter', () => {
-        anime({
-          targets: group,
-          scale: 1.01,
-          duration: DURATION.fast,
-          easing: EASING.smooth,
-        });
-      });
-
-      group.addEventListener('mouseleave', () => {
-        anime({
-          targets: group,
-          scale: 1,
-          duration: DURATION.fast,
-          easing: EASING.smooth,
-        });
-      });
-    });
-  }
-
-  // ═══════════════════════════════════════
-  //  INIT
-  // ═══════════════════════════════════════
-  function init() {
-    // Start hero animation after a brief delay for fonts to load
-    setTimeout(animateHero, 200);
-
-    // Set up scroll-triggered animations
-    setupScrollReveals();
-
-    // Interactive states
-    setupCardInteractions();
-    setupButtonInteractions();
-    setupLabelAnimations();
-    setupSocialAnimations();
-    setupNavDotAnimation();
-    setupVantaGlobe();
-    setupSkillGroupInteractions();
-  }
-
-  // Start when DOM is ready
-  if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', init);
-  } else {
-    init();
-  }
-
-})();
+  observer.observe(archSection);
+}
