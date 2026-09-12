@@ -23,6 +23,10 @@
   border: 1px solid transparent;
 }
 
+.btn:active {
+  transform: translateY(0) scale(0.98);
+}
+
 .btn--primary {
   background-color: var(--accent-crimson);
   color: #ffffff;
@@ -147,20 +151,29 @@
   aspect-ratio: 16 / 9;
   overflow: hidden;
   background-color: #090a10;
-  border: 1px solid rgba(255, 255, 255, 0.08);
+  border: 1px solid var(--border-hairline);
+  border-top-color: var(--border-specular);
   border-radius: 4px;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.5);
+  transition: border-color var(--transition-base), box-shadow var(--transition-base);
+}
+
+.showcase-card:hover .showcase-card__img-container {
+  border-color: var(--border-card-hover);
+  border-top-color: rgba(255, 255, 255, 0.3);
+  box-shadow: 0 16px 36px rgba(0, 0, 0, 0.8), 0 0 24px rgba(229, 9, 20, 0.12);
 }
 
 .showcase-card__img {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+  transition: transform 0.6s var(--ease-silk);
   display: block;
 }
 
 .showcase-card:hover .showcase-card__img {
-  transform: scale(1.035);
+  transform: scale(1.04);
 }
 
 /* Badge overlay on top of image */
@@ -293,12 +306,17 @@
 .tech-chip {
   font-family: var(--font-mono);
   font-size: 0.6875rem;
-  padding: 0.1875rem 0.5rem;
+  padding: 0.2rem 0.55rem;
   background-color: rgba(255, 255, 255, 0.04);
   border: 1px solid var(--border-subtle);
   color: var(--text-secondary);
-  border-radius: 2px;
+  border-radius: 3px;
+  transition: all var(--transition-fast);
 }
+
+.tech-chip:hover {
+  background-color: rgba(255, 255, 255, 0.08);
+  border-color: var(--border-specular);
   color: #ffffff;
 }
 

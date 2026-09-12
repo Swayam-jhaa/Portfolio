@@ -29,6 +29,9 @@
 </head>
 <body class="bg-grid-tech">
 
+  <!-- Real-Time Top Viewport Scroll Progress Bar -->
+  <div class="scroll-progress-bar" id="scroll-progress" aria-hidden="true"></div>
+
   <!-- Skip link for accessibility -->
   <a href="#main-content" class="sr-only">Skip to main content</a>
 
@@ -54,19 +57,19 @@
 
       <!-- Desktop Links -->
       <nav class="navbar__nav" aria-label="Primary navigation">
-        <a href="#systems" class="navbar__link">
+        <a href="#systems" class="navbar__link" data-nav="systems">
           <span class="navbar__link-num">01</span> SYSTEMS
         </a>
-        <a href="#process" class="navbar__link">
+        <a href="#process" class="navbar__link" data-nav="process">
           <span class="navbar__link-num">02</span> PROCESS &amp; SKILLS
         </a>
-        <a href="#architecture" class="navbar__link">
+        <a href="#architecture" class="navbar__link" data-nav="architecture">
           <span class="navbar__link-num">03</span> ARCHITECTURE
         </a>
-        <a href="#research" class="navbar__link">
+        <a href="#research" class="navbar__link" data-nav="research">
           <span class="navbar__link-num">04</span> SIH &amp; RESEARCH
         </a>
-        <a href="#contact" class="navbar__link">
+        <a href="#contact" class="navbar__link" data-nav="contact">
           <span class="navbar__link-num">05</span> CONTACT
         </a>
       </nav>
@@ -94,8 +97,8 @@
 
   <!-- Mobile Menu Overlay -->
   <div class="mobile-menu" id="mobile-menu">
-    <button id="mobile-menu-close" style="position:absolute; top:2rem; right:2rem; background:transparent; border:none; color:white; cursor:pointer;" aria-label="Close menu">
-      <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+    <button class="mobile-menu__close" id="mobile-menu-close" aria-label="Close menu">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
         <line x1="18" y1="6" x2="6" y2="18"></line>
         <line x1="6" y1="6" x2="18" y2="18"></line>
       </svg>

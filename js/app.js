@@ -93,7 +93,7 @@ function renderStack() {
   }).join('');
 }
 
-/* Mobile Menu */
+/* Mobile Menu Handler with Full Accessibility (ARIA & Escape Dismiss) */
 function initMobileMenu() {
   const toggle = document.getElementById('nav-toggle');
   const menu = document.getElementById('mobile-menu');
@@ -104,15 +104,33 @@ function initMobileMenu() {
 
   const openMenu = () => {
     menu.classList.add('mobile-menu--open');
+    toggle.setAttribute('aria-expanded', 'true');
     document.body.style.overflow = 'hidden';
+    if (closeBtn) closeBtn.focus();
   };
 
   const closeMenu = () => {
     menu.classList.remove('mobile-menu--open');
+    toggle.setAttribute('aria-expanded', 'false');
     document.body.style.overflow = '';
+    toggle.focus();
   };
 
   toggle.addEventListener('click', openMenu);
   if (closeBtn) closeBtn.addEventListener('click', closeMenu);
   links.forEach(link => link.addEventListener('click', closeMenu));
+
+  // Dismiss on Escape key
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && menu.classList.contains('mobile-menu--open')) {
+      closeMenu();
+    }
+  });
+
+  // Dismiss on backdrop click
+  menu.addEventListener('click', (e) => {
+    if (e.target === menu) {
+      closeMenu();
+    }
+  });
 }

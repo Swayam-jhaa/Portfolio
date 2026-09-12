@@ -89,11 +89,11 @@
 
 .navbar--scrolled {
   padding: 0.625rem 0;
-  background-color: rgba(6, 7, 9, 0.92);
+  background-color: var(--bg-glass);
   backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);
-  border-bottom: 1px solid var(--border-subtle);
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.8);
+  border-bottom: 1px solid var(--border-hairline);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.85);
 }
 
 .navbar__inner {
@@ -192,17 +192,42 @@
   display: flex;
   align-items: center;
   gap: 0.375rem;
+  position: relative;
 }
 
 .navbar__link-num {
   color: var(--accent-crimson);
   font-weight: 700;
   font-size: 0.6875rem;
+  transition: color var(--transition-fast);
 }
 
 .navbar__link:hover {
   color: #ffffff;
   background-color: rgba(255, 255, 255, 0.05);
+}
+
+/* Active Section Scroll-Spy Indicator */
+.navbar__link--active {
+  color: #ffffff;
+  background-color: rgba(255, 255, 255, 0.06);
+}
+
+.navbar__link--active .navbar__link-num {
+  color: var(--accent-crimson-bright);
+  text-shadow: 0 0 8px rgba(255, 30, 39, 0.6);
+}
+
+.navbar__link--active::after {
+  content: '';
+  position: absolute;
+  bottom: -4px;
+  left: 0.75rem;
+  right: 0.75rem;
+  height: 2px;
+  background-color: var(--accent-crimson);
+  box-shadow: 0 0 8px rgba(255, 30, 39, 0.85);
+  border-radius: 1px;
 }
 
 /* Nav Actions */
@@ -218,12 +243,18 @@
   background: transparent;
   border: 1px solid var(--border-subtle);
   color: var(--text-primary);
-  width: 38px;
-  height: 38px;
+  width: 44px;
+  height: 44px;
   align-items: center;
   justify-content: center;
   cursor: pointer;
   border-radius: 2px;
+  transition: all var(--transition-fast);
+}
+
+.navbar__toggle:hover {
+  border-color: var(--border-medium);
+  background: rgba(255, 255, 255, 0.04);
 }
 
 @media (max-width: 900px) {
@@ -237,12 +268,14 @@
   position: fixed;
   inset: 0;
   background-color: rgba(6, 7, 9, 0.98);
-  backdrop-filter: blur(20px);
-  z-index: 999;
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  z-index: 1050;
   display: flex;
   flex-direction: column;
   justify-content: center;
   padding: var(--space-2xl);
+  padding-bottom: calc(var(--space-2xl) + var(--safe-bottom));
   opacity: 0;
   pointer-events: none;
   transition: opacity var(--transition-base);
@@ -251,6 +284,29 @@
 .mobile-menu--open {
   opacity: 1;
   pointer-events: auto;
+}
+
+.mobile-menu__close {
+  position: absolute;
+  top: 1.5rem;
+  right: 1.5rem;
+  width: 48px;
+  height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid var(--border-hairline);
+  border-radius: 4px;
+  color: #ffffff;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+}
+
+.mobile-menu__close:hover {
+  background: rgba(229, 9, 20, 0.15);
+  border-color: var(--accent-crimson);
+  color: var(--accent-crimson);
 }
 
 .mobile-menu__links {
@@ -268,6 +324,13 @@
   display: flex;
   align-items: center;
   gap: var(--space-sm);
+  padding: 0.5rem 0;
+  transition: transform var(--transition-fast), color var(--transition-fast);
+}
+
+.mobile-menu__link:hover {
+  transform: translateX(8px);
+  color: var(--accent-crimson);
 }
 
 .mobile-menu__link span {
@@ -276,7 +339,6 @@
   color: var(--accent-crimson);
 }
 
-/* ==========================================================================
 /* ==========================================================================
    HERO SECTION (Rayhan Aditya Signature Layout — Large Scale, Unboxed, Static Stage)
    ========================================================================== */
@@ -611,6 +673,16 @@
 
   .hero__metric-item {
     justify-content: flex-start;
+  }
+}
+
+@media (max-width: 640px) {
+  .hero__top-strip {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.5rem;
+    padding-top: 0.75rem;
+    padding-bottom: 0.75rem;
   }
 }
 

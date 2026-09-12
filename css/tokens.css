@@ -6,8 +6,10 @@
   /* --- Canvas & Surface Colors (Pure Obsidian Void — No Blue Wash) --- */
   --bg-void: #060709;
   --bg-surface: #090a0e;
-  --bg-surface-elevated: #0f1017;
-  --bg-surface-hover: #151720;
+  --bg-surface-elevated: #0f1118;
+  --bg-surface-elevated-2: #161822;
+  --bg-surface-hover: #171924;
+  --bg-glass: rgba(9, 10, 14, 0.84);
 
   /* --- Accent Colors (Rayhan Aditya Crimson Signature) --- */
   --accent-crimson: #e50914;
@@ -20,13 +22,16 @@
 
   /* --- Typography Colors (WCAG AAA / AA Compliant) --- */
   --text-primary: #ffffff;
-  --text-secondary: #c0c5d0;
-  --text-muted: #7e8696;
-  --text-dim: #4e5564;
+  --text-secondary: #c4c9d4;
+  --text-muted: #828a9c;
+  --text-dim: #717888;
 
-  /* --- Borders & Structural Lines (Subtle Hairlines) --- */
+  /* --- Borders & Structural Lines (Subtle Hairlines & Specular Edges) --- */
   --border-subtle: rgba(255, 255, 255, 0.07);
-  --border-medium: rgba(255, 255, 255, 0.14);
+  --border-hairline: rgba(255, 255, 255, 0.09);
+  --border-specular: rgba(255, 255, 255, 0.14);
+  --border-card-hover: rgba(255, 255, 255, 0.22);
+  --border-medium: rgba(255, 255, 255, 0.16);
   --border-accent: rgba(229, 9, 20, 0.45);
   --border-cyan: rgba(0, 240, 255, 0.35);
 
@@ -54,8 +59,14 @@
   --glow-crimson: 0 0 35px rgba(255, 30, 39, 0.35);
   --glow-cyan: 0 0 30px rgba(0, 240, 255, 0.3);
 
-  /* --- Transitions --- */
-  --transition-fast: 150ms cubic-bezier(0.16, 1, 0.3, 1);
-  --transition-base: 250ms cubic-bezier(0.16, 1, 0.3, 1);
-  --transition-smooth: 500ms cubic-bezier(0.16, 1, 0.3, 1);
+  /* --- Transitions & Timing Curves --- */
+  --ease-silk: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-spring: cubic-bezier(0.175, 0.885, 0.32, 1.15);
+  --transition-fast: 150ms var(--ease-silk);
+  --transition-base: 250ms var(--ease-silk);
+  --transition-smooth: 500ms var(--ease-silk);
+  --transition-spring: 350ms var(--ease-spring);
+
+  /* --- Safe Area Insets --- */
+  --safe-bottom: env(safe-area-inset-bottom, 0px);
 }
