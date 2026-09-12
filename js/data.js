@@ -126,11 +126,14 @@ const PORTFOLIO_DATA = {
     },
     {
       id: 'decognito',
-      name: 'DeCognito',
+      num: '06',
+      name: 'DeCognito OSINT',
+      category: 'Distributed OSINT Engine · Celery & Redis',
       badge: 'Threat Intelligence',
       badgeType: 'standard',
       tagline: 'Modular OSINT Aggregation & Footprint Platform',
       description: 'Distributed OSINT engine coordinating parallel external reconnaissance tasks via Celery and Redis to profile external target infrastructure, certificate history, and network associations.',
+      image: 'assets/images/projects/decognito.jpg',
       highlights: [
         'Asynchronous background worker orchestration using Celery and Redis',
         'Resilient rate-limiting and error-handling layer for third-party APIs',
@@ -138,7 +141,7 @@ const PORTFOLIO_DATA = {
       ],
       stack: ['Python', 'FastAPI', 'Celery', 'Redis', 'Streamlit'],
       github: 'https://github.com/Swayam-jhaa/DeCognito',
-      featured: false
+      featured: true
     }
   ],
 
